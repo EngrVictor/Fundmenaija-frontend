@@ -1,0 +1,8 @@
+.contact {
+    background-color: var(--light);
+    height: 50vh;
+    margin: 30px;
+    padding: 50px 100px;
+    display: flex;
+    justify-content: space-between;
+}

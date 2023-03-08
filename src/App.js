@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import { Outlet } from "react-router-dom";
+import Counter from './components/Counter';
+import Footer from './components/Footer';
+import Main from './Routes/Main';
+import Nav from './components/Nav';
+import Serve from './components/Serve';
 
 function App() {
+
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:5001")
+      .then((res) => res.json())
+      .then((data) => setMessage(data.message));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {`${message} from backend`}
+         <Nav/>
+         <Serve/>
+         <Footer/>                     
     </div>
-  );
+  ); 
 }
 
 export default App;
