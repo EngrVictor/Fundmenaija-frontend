@@ -1,4 +1,8 @@
 /* Path: fundmenaija/src/components/Main.css */
+/* please relative path */
+/*  You attempted to import /Users/user/Desktop/Desktop/fundme project/fundmenaija/src/assets/images/Donate_img.jpeg which falls outside of the project src/ directory. and this path is not the same with my system, so the app crashes.
+ Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/. */
 .main-body {
     display: flex;
     text-align: center;
@@ -157,7 +161,7 @@ p {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    background-image: linear-gradient(url('/Users/user/Desktop/Desktop/fundme project/fundmenaija/src/assets/images/crowdfunding-5210345-4352911.png'));
+    background-image: linear-gradient(url('../assets/images/crowdfunding-5210345-4352911.png'));
 }
 
 .text-cont_3 {

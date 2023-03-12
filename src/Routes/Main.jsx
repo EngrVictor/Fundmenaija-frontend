@@ -3,8 +3,9 @@ import './Main.css'
 import { BsFillPersonFill } from 'react-icons/bs';
 import { FaArrowCircleLeft, FaArrowCircleRight, FaChurch } from 'react-icons/fa';
 import { MdSchool, MdAddBusiness, MdLocalHospital } from 'react-icons/md';
-import headerImg from '/Users/user/Desktop/Desktop/fundme project/fundmenaija/src/assets/images/Untitled-1.png'
-import donate from '/Users/user/Desktop/Desktop/fundme project/fundmenaija/src/assets/images/Donate_img.jpeg'
+// Please stop using absolute Path to reference your images and other assert, its breaking the app.
+import headerImg from '../assets/images/Untitled-1.png'
+import donate from '../assets/images/Donate_img.jpeg'
 
 const Main = () => {
   return (
