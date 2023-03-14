@@ -1,8 +1,12 @@
 import React from 'react'
+import Footer from '../../components/Footer/Footer'
+import Nav from '../../components/Nav/Nav'
 import './Contact.css'
 
 const Contact = () => {
   return (
+    <>
+    <Nav />
     <div className='contact'>
         <div className='contact-left'>
             <h3>Lagos, Nigeria</h3>
@@ -37,6 +41,8 @@ const Contact = () => {
             </form>
         </div>
     </div>
+    <Footer />
+    </>
   )
 }
 

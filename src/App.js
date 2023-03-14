@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
 import {
-  BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
@@ -18,21 +16,15 @@ import Admin from './Routes/Admin/Admin'
 import Dashboard from './Routes/user/Dashboard'
 import Fundraisedetails from './Routes/FundraiserDetails/Fundraisedetails'
 import ErrorPage from './Routes/ErrorPage/ErrorPage'
+import Nav from './components/Nav/Nav';
 
 
 function App() {
-
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    axios("http://localhost/API/index.php")
-      .then((data) => setMessage(data.message));
-  }, []);
-
   return (
-    <BrowserRouter>
+    <>
+      {/* <Nav /> */}
+      {/* <h2>{message === "" ? "Connecting to Backend..." : `${message} from backend`}</h2> */}
       <Routes>
-        <h2>{message === "" ? "Connecting to Backend..." : `${message} from backend`}</h2>
         <Route exact path="/" element={<Main />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -45,8 +37,8 @@ function App() {
         <Route path="/details" element={<Fundraisedetails />} />
 
         <Route path="*" element={<ErrorPage/>} />
-      </Routes>
-    </BrowserRouter>                   
+      </Routes>   
+    </>             
   ); 
 }
 

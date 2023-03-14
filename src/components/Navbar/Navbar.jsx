@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Logo from '../../asserts/images/logo.jpg'
+import Logo from '../../assets/images/Logo3.png'
 
 const Navbar = ({ backgroundColor, linkColor }) => {
     const elementSelector = (element) => document.querySelector(element)

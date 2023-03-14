@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet, Link } from "react-router-dom";
 import './Nav.css'
-import logo from '../assets/images/Logo3.png'
+import logo from '../../assets/images/Logo3.png'
 
 const Nav = () => {
   window.onscroll = () => {
@@ -17,16 +17,14 @@ const Nav = () => {
     <div className='nav'>
         <div className='logo-cont'>
             <img src={logo} alt="" id='logo' />
-            <Link to={'/'}><h4 id='logo-text'>fundmenaija</h4></Link>
+            <Link to={'/'}><h4 id='logo-text'>Fundmenaija</h4></Link>
         </div>
-        
-
         <ul className='nav-list'>
-            <li><Link to={'about'}>About</Link></li>
-            <li><Link to={'contact'}>Contact</Link></li>
-            <li><Link to={'donate'}>Donate</Link></li>
-            <li><Link to={'signIn'}>Sign in</Link></li>
-            <li className='sign-btn'><Link to={'signUp'}>Sign up</Link></li>
+            <li><Link to={'/about'}>About</Link></li>
+            <li><Link to={'/contact'}>Contact</Link></li>
+            <li><Link to={'/donate'}>Donate</Link></li>
+            <li><Link to={'/signIn'}>Sign in</Link></li>
+            <li className='sign-btn'><Link to={'/signUp'}>Sign up</Link></li>
         </ul>
     </div>
   )

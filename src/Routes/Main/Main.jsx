@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import axios from 'axios';
 import './Main.css'
 import { BsFillPersonFill } from 'react-icons/bs';
 import { FaArrowCircleLeft, FaArrowCircleRight, FaChurch } from 'react-icons/fa';
 import { MdSchool, MdAddBusiness, MdLocalHospital } from 'react-icons/md';
 // Please stop using absolute Path to reference your images and other assert, its breaking the app.
-import headerImg from '../assets/images/Untitled-1.png'
-import donate from '../assets/images/Donate_img.jpeg'
+import headerImg from '../../assets/images/crowdfunding-5210345-4352911.png'
+import donate from '../../assets/images/Donate_img.jpeg'
+
+// Importing routes
+import Nav from '../../components/Nav/Nav'
+import Footer from '../../components/Footer/Footer'
 
 const Main = () => {
+    // am using axios for my fetch cause its more efficient
+//   useEffect(() => {
+//     axios("http://localhost/API/index.php")
+//       .then((data) => console.log(`Backend is connected: ${data.message}`));
+//   }, []);
+
     
   return (
     <div className="App">
@@ -30,7 +41,7 @@ const Main = () => {
                 <button className='btn-home'>Get started</button>
             </div>
             <div className='img-cont_1'>
-                <img src={donate} alt="" />
+                <img src={donate} alt="donate" />
             </div>
         </div>
         <div className='section-2'>

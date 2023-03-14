@@ -1,14 +1,13 @@
 import '../FundraiserDetails/Fundraiserdetails.css'
 
 import Navbar from '../../components/Navbar/Navbar'
-import img2 from '../../asserts/images/222.jpg'
-import img from '../../asserts/images/hospital.webp'
+import img2 from '../../assets/images/Logo3.png'
+import img from '../../assets/images/Logo3.png'
 import { Link } from 'react-router-dom'
-import Footer from '../../components/Footer'
+import Footer from '../../components/Footer/Footer'
 
 const Fundraisedetails = () => {
   return (
-
     <>
     <Navbar  backgroundColor={'white'}/>
     <section className="fundraiser-details Fundraiser p-lg-4 my-lg-5">

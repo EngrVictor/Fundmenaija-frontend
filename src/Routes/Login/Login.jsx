@@ -1,7 +1,7 @@
 import React from 'react'
 // import Navbar from '../../components/Navbar/Navbar';
-import '../../pages/Forms/login.css'
-import img from '../../asserts/images/222.jpg'
+import './login.css'
+import img from '../../assets/images/Logo3.png'
 import { useState } from 'react'
 
 function Login() {
@@ -27,7 +27,7 @@ function Login() {
                     <div className="col-md-7">
                         <div className="card-body">
                             <div className="brand-wrapper">
-                                <img src="../assets/img/Logo.svg" alt="logo" className="logo" />
+                                <img src="../assets/img/Logo3.png" alt="logo" className="logo" />
                                 <p>FundMeNaija</p>
                             </div>
                             <p className="login-card-description">Sign In</p>
