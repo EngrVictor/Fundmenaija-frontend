@@ -23,8 +23,8 @@ const Nav = () => {
             <li><Link to={'/about'}>About</Link></li>
             <li><Link to={'/contact'}>Contact</Link></li>
             <li><Link to={'/donate'}>Donate</Link></li>
-            <li><Link to={'/signIn'}>Sign in</Link></li>
-            <li className='sign-btn'><Link to={'/signUp'}>Sign up</Link></li>
+            <li><Link to={'/login'}>Sign In</Link></li>
+            <li className='sign-btn'><Link to={'/account'}>Sign Up</Link></li>
         </ul>
     </div>
   )
