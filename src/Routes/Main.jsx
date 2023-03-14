@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import './Main.css'
 import { BsFillPersonFill } from 'react-icons/bs';
 import { FaArrowCircleLeft, FaArrowCircleRight, FaChurch } from 'react-icons/fa';
@@ -8,6 +9,12 @@ import headerImg from '../assets/images/Untitled-1.png'
 import donate from '../assets/images/Donate_img.jpeg'
 
 const Main = () => {
+    const [issues, setIssues] = useState([]);
+
+    useEffect(() => {
+        axios("http://localhost/API/data/post/read.php")
+        .then((res) => console.log(res.data));
+    }, []);
   return (
     <div>
         <div className='main-body'>
@@ -91,7 +98,6 @@ const Main = () => {
                 <i><FaArrowCircleRight/></i>
             </div>
         </div>
-
         <div className="fund-cards">
             <div className="fund-card">
                 <img src={headerImg}/>

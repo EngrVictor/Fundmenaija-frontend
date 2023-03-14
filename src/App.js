@@ -6,20 +6,21 @@ import Footer from './components/Footer';
 import Main from './Routes/Main';
 import Nav from './components/Nav';
 import Serve from './components/Serve';
+import axios from 'axios';
 
 function App() {
 
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5001/API")
-      .then((res) => res.json())
+    axios("http://localhost/API/index.php")
       .then((data) => setMessage(data.message));
   }, []);
 
   return (
     <div className="App">
-      {`${message} from backend`}
+      <h2>{message === "" ? "Connecting to Backend..." : `${message} from backend`}</h2>
+
          <Nav/>
          <Serve/>
          <Footer/>                     

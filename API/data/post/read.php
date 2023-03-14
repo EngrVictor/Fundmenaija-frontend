@@ -15,6 +15,7 @@
 
   // Blog post query
   $result = $post->read();
+  
   // Get row count
   $num = $result->rowCount();
 
@@ -29,11 +30,13 @@
 
       $post_item = array(
         'id' => $id,
-        'title' => $title,
-        'body' => html_entity_decode($body),
-        'author' => $author,
-        'category_id' => $category_id,
-        'category_name' => $category_name
+        'user_id' => $user_id,
+        'user_username' => $user_username,
+        'avatar' => $avatar,
+        'avatar_2' => $avatar_2,
+        'issue_title' => html_entity_decode($issue_title),
+        'issue_body' => html_entity_decode($issue_body),
+        'issue_time' => $issue_time
       );
 
       // Push to "data"

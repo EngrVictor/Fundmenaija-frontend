@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route, Routes } from "react-router-dom";
 import About from '../Routes/About';
+import Admin from '../Routes/Admin/Admin';
 import Contact from '../Routes/Contact';
 import Donate from '../Routes/Donate';
 import ErrorPage from '../Routes/ErrorPage';
@@ -15,6 +16,8 @@ const Serve = () => {
             <Route exact path="/donate" element={<Donate/>} />
             <Route exact path="/contact" element={<Contact/>} />
             <Route path="*" element={<ErrorPage/>} />
+            {/* Import of Admin Routes Here */}
+            <Route path="/admin" element={<Admin/>} />
         </Routes>
     </div>
   )
