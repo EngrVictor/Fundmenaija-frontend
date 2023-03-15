@@ -1,0 +1,40 @@
+.error-page {
+    height: 20vh;
+    margin: 100px 100px;
+}
+
+.error-page h1 {
+    font-size: 100px;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.error-page p {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--slight);
+}
+
+.error-page a {
+    color: var(--dark);
+    text-decoration: none;
+}
+
+.error-page a:hover {
+    color: var(--primary);
+    transition: all 0.5s ease;
+}
+
+.error-cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* flex-direction: column; */
+}
+
+.error-cont img {
+    width: 50%;
+    margin-right: 50px;
+    opacity: 0.5;
+    z-index: -1;
+}

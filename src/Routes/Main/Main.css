@@ -1,0 +1,299 @@
+/* Path: fundmenaija/src/components/Main.css */
+/* please relative path */
+/*  You attempted to import /Users/user/Desktop/Desktop/fundme project/fundmenaija/src/assets/images/Donate_img.jpeg which falls outside of the project src/ directory. and this path is not the same with my system, so the app crashes.
+ Relative imports outside of src/ are not supported.
+You can either move it inside src/, or add a symlink to it from project's node_modules/. */
+.main-body {
+    display: flex;
+    text-align: center;
+    padding: 0 50px;
+    height: 90vh;
+    margin-top: -20px;
+}
+
+p {
+    line-height: 27px;
+    font-size: 17px;
+    color: grey;
+}
+
+.img-cont {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-cont {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading {
+    font-size: calc(1.475rem + 2.2vw);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.heading span {
+    color: var(--primary);
+}
+
+.paratext {
+    font-size: calc(0.875rem + 0.5vw);
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: var(--slight);
+}
+
+.btn-home {
+    cursor: pointer;
+    padding: 15px 40px;
+    border-radius: 30px;
+    border: none;
+    font-size: large;
+    background-color: var(--primary);
+    color: var(--light);
+}
+
+.section-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 50px;
+    width: 80%;
+    margin: 0 auto;
+    /* margin-top: -20px; */
+}
+
+.section-1 .img-cont_1 {
+    width: 30%;
+}
+
+.img-cont_1 img {
+    width: 350px;
+    height: 400px;
+    border-radius: 20px;
+    opacity: 5;
+}
+
+.section-1 .text-cont_1 {
+    width: 60%;
+}
+
+.text-cont_1 .heading_1 {
+    font-size: calc(1.475rem + 2.2vw);
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.text-cont_1 p {
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.section-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    /* margin-top: -20px; */
+}
+
+.section-2 .heading_2 {
+    font-size: calc(1.475rem + 1.5vw);
+    font-weight: 400;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.text-cont_2 hr {
+    width: 100px;
+    height: 3px;
+    background-color: var(--slight);
+    border: none;
+    margin-top: 20px;
+}
+
+.card-cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.center {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card {
+    /* background-color: var(--slight); */
+    color: var(--slight);
+    /* padding: 20px; */
+    width: 200px;
+}
+
+.card i {
+    color: var(--primary);
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.card * {
+    margin-bottom: 10px;
+}
+
+.section-3 {
+    width: 80%;
+    /* padding: 0 50px; */
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-image: linear-gradient(url('../assets/images/crowdfunding-5210345-4352911.png'));
+}
+
+.text-cont_3 {
+    width: 40%;
+}
+
+.text-cont_3:last-child {
+    width: 50%;
+}
+
+.text-cont_3 .heading_3 {
+    font-size: calc(1.475rem + 0.2vw);
+    font-weight: 400;
+}
+
+.text-cont_3 .top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.text-cont_3 p {
+    margin-bottom: 20px;
+}
+
+.top .num {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary);
+    color: var(--light);
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 50%;
+    font-size: large;
+    margin-right: 10px;
+}
+
+.section-4 {
+    width: 80%;
+    /* padding: 0 50px; */
+    margin: 50px auto;
+}
+
+.top-fund {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.btn-cont button {
+    /* background-color: var(--primary); */
+    color: var(--light);
+    padding: 10px 20px;
+    border: none;
+    
+    transition: all 0.5s ease;
+}
+
+.btn-cont * {
+    cursor: pointer;
+    color: var(--primary)!important;
+    font-size: 30px;
+    transition: all 0.5s ease;
+}
+
+.btn-cont *:hover {
+   transform: translateY(-5px);
+}
+
+.btn-cont *:active {
+    transform: translateY(0);
+}
+
+.section-4 h2 {
+    font-size: calc(1.475rem + 0.2vw);
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.fund-cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+    color: var(--slight);
+    overflow-x: hidden;
+}
+
+.fund-card {
+    min-width: 320px;
+    margin: 5px;
+    background-color: var(--light);
+    /* padding: 20px; */
+    border-radius: 20px;
+    border: 2px solid var(--light);
+    cursor: pointer;
+}
+
+.fund-card:hover img{
+    transform: scale(0.98);
+    transition: 0.5s ease;
+}
+
+.fund-card:hover {
+    border: 2px solid var(--primary);
+}
+
+.fund-card img {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+}
+
+.fund-card p {
+    font-size: 15px;
+    padding: 0 20px;
+}
+
+.fund-card h2 {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 0 20px;
+    margin: 10px 0;
+}
+
+.fund-card-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
