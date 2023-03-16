@@ -35,6 +35,7 @@ function App() {
 
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/details" element={<Fundraisedetails />} />
+        <Route path="/passwordreset" element={<Fundraisedetails />} />
 
         <Route path="*" element={<ErrorPage/>} />
       </Routes>   

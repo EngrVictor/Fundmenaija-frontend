@@ -1,214 +1,226 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import Footer from '../../components/Footer/Footer'
+import Nav from '../../components/Nav/Nav'
 
 function CreateAccount() {
+    useEffect(() => {
+        const nextPrev = e => {
+            console.log('button next clicked')
+        }
+    })
   return (
     <div>
-        <form id="regForm" action="" method="POST" enctype="multipart/form-data">
-            <h1 className="mb-3">Create Account</h1>
-            <div className="tab mb-3">
-                <h3 className="mb-3 stepHead">Step 1/4</h3>
-                <p className="SubAction">Personal Details:</p>
-                <div className="row g-2 mb-3">
-                    <div className="col-md">
-                        <div className="form-floating">
-                            <input type="text" name="FirstName" className="form-control" id="FirstName" placeholder="First Name" />
-                            <label for="floatingInputGrid">First Name</label>
+        <Nav />
+        <br />
+        <br />
+        <br />
 
-                            <span id="FnameError" style="color: red;">Error</span>
-                        </div>
-                    </div>
-                    <div className="col-md">
-                        <div className="col-md">
-                            <div className="form-floating">
+        <h2>Sign up page</h2>
+        {/* <form class='shadow' id="regForm" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data" novalidate>
+        <a href="../index.php" class="nav-link text-dark d-flex align-items-center my-4">
+            <i class="fa fa-angle-left fa-2x pointer"></i>
+            <p class="my-2 pointer"> Home</p>
+        </a>
 
-                                <input type="text" name="LastName" className="form-control" id="Lname" placeholder="Last Name" />
-                                <label for="floatingInputGrid">Last Name</label>
+        <h1 class="mb-3">Create Account</h1>
 
-                                <span id="LnameError" style="color: red;">Name_error</span>
+        <!-- Tab 1 -->
 
-                            </div>
-                        </div>
+        <div class="tab mb-3">
+            <h3 class="mb-3 stepHead">Step 1/2</h3>
+            <p class="SubAction">Personal Details:</p>
+            <div class="row g-2 mb-3">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" name="FirstName" class="form-control" id="FirstName" placeholder="First Name">
+                        <label for="floatingInputGrid">First Name</label>
+
+                        <span id="FnameError" style="color: red;"><?php if (isset($_POST['submit'])) {
+                            echo $First_Name_error;
+                        } ?></span>
                     </div>
                 </div>
-                <div className="row g-2 mb-3">
-                    <div className="col-md">
-                        <div className="col-md">
-                            <div className="form-floating">
+                <div class="col-md">
+                    <!-- <div class="col-md"> -->
+                        <div class="form-floating">
+                            <input type="text" name="LastName" class="form-control" id="Lname" placeholder="Last Name">
+                            <label for="floatingInputGrid">Last Name</label>
 
-                                <input type="text" name="FatherName" className="form-control" id="FAname" placeholder="Father's Name" />
-                                <label for="floatingInputGrid">Father's Full Name</label>
-                                <span id="FAnameError" style="color: red;">
-                                </span>
-                            </div>
+                            <span id="LnameError" style="color: red;"><?php if (isset($_POST['submit'])) {
+                                echo $Last_Name_error;
+                                } ?></span>
                         </div>
-                    </div>
-                    <div className="col-md">
-                        <div className="col-md">
-                            <div className="form-floating">
-
-                                <input type="text" name="MotherName" className="form-control" id="MAname" placeholder="Mother's Name" />
-                                <label for="floatingInputGrid">Mother's Full Name</label>
-                                <span id="MAnameError" style="color: red;">                          echo $Mother_Name_error</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div className="row g-2 mb-3">
-                    <div className="col-md">
-                        <div className="col-md">
-                            <div className="form-floating">
-                                <input type="date" name="BirthDate" className="form-control" id="BirthDate" placeholder="Birth Date" />
-                                <label for="floatingInputGrid">Birth Date</label>
-                                <span id="AgeError" style="color: red;"> $Birth_Date_error;
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md">
-                        <div className="col-md">
-                            <div className="form-floating">
-                                <input name="MobileNumber" className="form-control" type="tel" id="MobileNo" pattern="[0-9]{10}" placeholder="Mobile Number" onkeypress="return isNumber(event)" title="10 Digit Mobile Number" />
-                                <label for="floatingInputGrid">Mobile Number</label>
-                                <span id="MobileNoError" style="color: red;">                               echo $Mobile_Number_error</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="row g-2 mb-3">
-                    <div className="col-md">
-                        <div className="col-md">
-                            <div className="form-floating">
-                                <input type="text" name="PanNumber" className="form-control" id="PanNo" placeholder="Pan Number" title="Eg. (202) 330 2919" />
-                                <label for="floatingInputGrid">Phone Number</label>
-                                <span id="PanError" style="color: red;">
-                                    echo $Pan_Number_error;
-                          </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md">
-                        <div className="col-md">
-                            <div className="form-floating">
-                                <input name="AdharNumber" className="form-control" type="tel" id="AdharNo" pattern="[0-9]{9}" max="9" placeholder="SSN Number" onkeypress="return isNumber(event)" title="9 Digit SSN" />
-                                <label for="floatingInputGrid">SSN Number</label>
-                                <span id="AdharError" style="color: red;">                                   echo $Adhar_Number_error;
+                <!-- </div> -->
+            </div>
+            <div class="row g-2 mb-3">
+                <div class="col-md">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input name="MobileNumber"
+                                class="form-control" type="tel" id="MobileNo" 
+                                pattern="[0-9]{11}" placeholder="Mobile Number" 
+                                onkeypress="return isNumber(event)" 
+                                title="11 Digit Mobile Number"
+                            >
+                            <label for="floatingInputGrid">Mobile Number</label>
+                            <span id="MobileNoError" style="color: red;">
+                                <?php if (isset($_POST['submit'])) {echo $Mobile_Number_error;} ?>
                             </span>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div className="row g-2 mb-3">
-                    <div className="col-md">
-                        <div className="col-md">
-                            <div className="form-floating">
-                                <input type="email" name="email" className="form-control" id="email" placeholder="Email Address" />
-                                <label for="floatingInputGrid">Email Address</label>
-                                <span id="EmailError" style="color: red;">error</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md">
-                        <div className="col-md">
-                            <div className="form-floating">
-                                <input name="pincode" className="form-control" type="tel" id="pincode" pattern="[0-9]{6}" placeholder="Pin Code" onkeypress="return isNumber(event)" title="6-digit Number" />
-                                <label for="floatingInputGrid">Pin Code</label>
-                                <span id="PincodeError" style="color: red;">                         echo $Pincode_error</span>
-                            </div>
+                <div class="col-md">
+                    <div class="col-md">
+                        <div class="form-floating">
+                            <input type="email" name="email" 
+                                class="form-control" id="email" 
+                                placeholder="Email Address"
+                            >
+                            <label for="floatingInputGrid">Email Address</label>
+                            <span id="EmailError" style="color: red;">
+                                <?php if (isset($_POST['submit'])) {echo $Email_error;} ?>
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div className="tab mb-3" id="KycTab">
-                <h3 className="mb-3 stepHead">Step 2/4</h3>
-                <p className="SubAction">Upload SSN Document</p>
-
-                <div className="form-group mb-3">
-                    <label for="exampleFormControlFile1">Passport Photograph</label>
-                    <input type="file" name="PanCardUp" className="form-control-file" id="PANCardUp" size="30" accept="image/jpg,image/png,image/jpeg,image/gif" />
-                    <span id="PanUPError" style="color: red;">
-                        echo $Pan_Up_error
-                    </span>
+        <!-- </div> -->
+        <div class="row g-2 mb-3">
+            <p class="SubAction">
+                <select name="id_type" id="id_type" class="form-control" required>
+                    <option value="null" selected disable>Select Document To Upload</option>
+                    <option value="NIN">NIN Document</option>
+                    <option value="voters_card">Voter's Card</option>
+                    <option value="Drivers_lincense">Drivers Lincense</option>
+                    <option value="international_passport">International Passport</option>
+                </select>
+            </p>
+        </div>
+        <div class="row g-2 mb-3"> 
+            <!-- <div class="col-md mb-3">
+                <div class="col-md">                            
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlFile1">Passport Photograph</label>
+                        <input 
+                            type="file" name="PanCardUp" 
+                            class="form-control-file" id="PANCardUp" 
+                            size="30" accept="image/jpg,image/png,image/jpeg,image/gif"
+                        >
+                        <span id="PanUPError" style="color: red;">
+                            <?php if (isset($_POST['submit'])) {echo $Pan_Up_error;} ?>
+                        </span>
+                    </div>
                 </div>
-                <div className="form-groupmb-3">
-                    <label for="exampleFormControlFile1">Upload SSN Card</label>
-                    <input type="file" name="AdharCardUp" className="form-control-file" id="AdharCardUp" size="30" accept="image/jpg,image/png,image/jpeg,image/gif" />
-                    <span id="AdharUpError" style="color: red;">  echo $Adhar_Up_error</span>
+            </div> -->
+            <div class="col-md g-2 mb-3">
+                <div class="col-md"> 
+                    <div class="form-group mb-3">
+                        <label for="exampleFormControlFile1">Upload ID Card</label>
+                        <input 
+                            type="file" name="AdharCardUp" 
+                            class="form-control-file" id="AdharCardUp" 
+                            size="30" accept="image/jpg,image/png,image/jpeg,image/gif"
+                        >
+                        <span id="AdharUpError" style="color: red;">
+                            <?php if (isset($_POST['submit'])) {echo $Adhar_Up_error;} ?>
+                        </span>
+                    </div>
                 </div>
                 <span id="mailsendError"></span>
             </div>
+         </div>
+            
 
-            <div className="tab">
-                <h3 className="mb-3 stepHead">Step 3/4</h3>
-                <p className="SubAction">Validate Email Account</p>
+        </div>
 
-                <div className="col-md mb-3">
-                    <div className="col-md">
-                        <div className="alert alert-success" role="alert">
-                            Verification Code Send On Your email, Please check your email
+            <!-- <div class="tab">
+                <h3 class="mb-3 stepHead">Step 2/2</h3>
+                <p class="SubAction">Validate Email Account</p>
+
+                <div class="col-md mb-3">
+                    <div class="col-md">
+                        <div class="alert alert-success" role="alert">
+                            Verification Code Sent To Your email, Kindly check your email
                         </div>
-                        <div className="form-floating OtpMobile">
-                            <input type="tel" className="form-control" name="Otp" id="Otp" placeholder="Enter 6 Digit OTP" pattern="[0-9]{6}" />
+                        <div class="form-floating OtpMobile">
+                            <input 
+                                type="tel" class="form-control" 
+                                name="Otp" id="Otp" placeholder="Enter 6 Digit OTP" 
+                                pattern="[0-9]{6}"
+                                value="<?php echo isset($_SESSION['otp']) ? $_SESSION['otp'] : 'OTP Failed'; ?>"
+                            >
+                            <p><a href="#" class="nav-link h6" onclick="nextPrev(1)">Verify Later? Skip Verification</a></p>
+
                             <label for="floatingInputGrid">Enter 6 Digit OTP</label>
-                            <span style="color: red;" id="OtpError"></span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div className="tab">
-                <h3 className="mb-3 stepHead">Step 4/4</h3>
-                <p className="SubAction">Create Username and Password</p>
-
-                <div className="col-md mb-3">
-                    <div className="col-md">
-                        <div className="form-floating">
-                            <input type="text" className="form-control" name="Username" id="Username" placeholder="Create Username" />
-                            <label for="floatingInputGrid">Create Username</label>
-
-                            <span style="color: red;" id="UsernameError" name="UsernameError">UsernameError</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md mb-3">
-                    <div className="col-md">
-                        <div className="form-floating">
-                            <input className="form-control" type="password" name="Password" id="Password" placeholder="Enter Password" data-toggle="tooltip" data-placement="top" title="Enter Password with atleast 8 charater long with 1 Capital 1 small 1 number and 1 special charater" />
-                            <label for="floatingInputGrid">Enter Password</label>
-
-                            <span style="color: red;" id="PasswordError" name="PasswordError"> $PasswordError;</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-md mb-3">
-                    <div className="col-md">
-                        <div className="form-floating">
-                            <input className="form-control" type="password" name="ConfirmPass" id="ConfirmPass" placeholder="Confirm Password" />
-                            <label for="floatingInputGrid">Confirm Password</label>
-
-                            <span style="color: red;" id="ConfirmPassError" name="ConfirmPassError">                                                      echo ConfirmPassError;
-                                                                                                  </span>
+                            <span style="color: red;" id="OtpError"></span>                          
+                       
                         </div>
                     </div>
                 </div>
             </div>
+        </div> -->
 
-            <div style="overflow:auto;">
-                <div style="float:right;">
-                    <button type="button" id="prevBtn" className="CustomButton" onclick="nextPrev(-1)">Previous</button>
-                    <button type="button" id="nextBtn" className="CustomButton" onclick="nextPrev(1)">Next</button>
-                    <input type="submit" name="submit" id="submitBtn" className="CustomButton" style="display: none;" />
+        <!-- Tab 4 -->
+
+        <div class="tab">
+            <h3 class="mb-3 stepHead"></h3>
+            <p class="SubAction">Create Username and Password</p>
+
+            <div class="col-md mb-3">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="Username" id="Username" placeholder="Create Username">
+                        <label for="floatingInputGrid">Create Username</label>
+
+                        <span style="color: red;" id="UsernameError" name="UsernameError"><?php if (isset($_POST['submit'])) {
+                                                                                                echo $UsernameError;
+                                                                                            } ?></span>
+                    </div>
                 </div>
             </div>
+            <div class="col-md mb-3">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input class="form-control" type="password" name="Password" id="Password" placeholder="Enter Password" data-toggle="tooltip" data-placement="top" title="Enter Password with atleast 8 charater long with 1 Capital 1 small 1 number and 1 special charater">
+                        <label for="floatingInputGrid">Enter Password</label>
 
-            <div style="text-align:center;margin-top:40px;">
-                <span className="step"></span>
-                <span className="step"></span>
-                <span className="step"></span>
-                <span className="step"></span>
+                        <span style="color: red;" id="PasswordError" name="PasswordError"><?php if (isset($_POST['submit'])) {
+                                                                                                echo $PasswordError;                                                        } ?></span>
+                    </div>
+                </div>
             </div>
-        </form>
+            <div class="col-md mb-3">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input class="form-control" type="password" name="ConfirmPass" id="ConfirmPass" placeholder="Confirm Password">
+                        <label for="floatingInputGrid">Confirm Password</label>
+
+                        <span style="color: red;" id="ConfirmPassError" name="ConfirmPassError"><?php if (isset($_POST['submit'])) {
+                                                                                                    echo $ConfirmPassError;
+                                                                                                } ?></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button type="button" id="prevBtn" class="CustomButton" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" class="CustomButton" onclick="nextPrev(1)">Next</button>
+                <input type="submit" name="submit" id="submitBtn" class="CustomButton" style="display: none;">
+            </div>
+        </div>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <!-- <span class="step"></span>
+            <span class="step"></span> -->
+        </div>
+    </form> */}
+    <Footer />
     </div>
   )
 }

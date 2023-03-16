@@ -1,5 +1,7 @@
 .footer {
     /* display: flex; */
+    /* position: absolute !important;
+    bottom: 0 !important; */
     background-color: var(--dark);
     padding: 50px 100px;
 }
