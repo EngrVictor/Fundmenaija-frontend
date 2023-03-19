@@ -58,10 +58,10 @@ const Main = () => {
     // }, [])
 
     // am using axios for my fetch cause its more efficient
-    useEffect(() => {
-        axios("http://localhost/API/data/post/read.php")
-        .then((res) => console.log(res.data));
-    }, []);
+    // useEffect(() => {
+    //     axios("http://localhost/API/data/post/read.php")
+    //     .then((res) => console.log(res.data));
+    // }, []);
 
     
   return (
@@ -145,15 +145,16 @@ const Main = () => {
                     <p>Fund Raisers</p>
                     <h2>Donate Funds to Fundraisers in your community</h2>
                 </div>
-                <div className="btn-cont">
+                {/* <div className="btn-cont">
                     <i><FaArrowCircleLeft/></i>
                     <i><FaArrowCircleRight/></i>
-                </div>
+                </div> */}
             </div>
         {/* fetch fund Raiers from REST-API */}
         {/* carosel here */}
-        {/* <FundRaisers />  */}
-        <div className="fund-cards">
+        <FundRaisers /> 
+ 
+        {/* <div className="fund-cards">
             <div className="fund-card">
                 <img src={headerImg}/>
                 <h2>Church Project</h2>
@@ -181,7 +182,7 @@ const Main = () => {
                     <h4>483 donations</h4>
                 </div>
             </div>
-        </div>
+        </div> */}
     </section>
     </div>
     <Chat />
