@@ -251,7 +251,7 @@ function CreateAccount() {
             <span class="step"></span> -->
         </div>
     </form> */}
-    <Footer />
+//     <Footer />
     </div>
   )
 }
