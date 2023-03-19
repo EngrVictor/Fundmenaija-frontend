@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import './login.css'
 import img from '../../assets/images/Logo3.png'
 import test from '../../assets/images/hero-bg.jpeg'
-import loginImg from '../../assets/images/WhatsApp Image 2023-02-21 at 14.10.12.jpeg'
-import Footer from '../../components/Footer/Footer'
-import Nav from '../../components/Nav/Nav'
 
 function CreateAccount() {
     

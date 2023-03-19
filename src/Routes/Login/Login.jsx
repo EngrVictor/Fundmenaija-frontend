@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import './login.css'
 import img from '../../assets/images/Logo3.png'
 import loginImg from '../../assets/images/loginImage.jpeg'
-import Footer from '../../components/Footer/Footer';
-import Nav from '../../components/Nav/Nav';
 
 
 function Login() {
