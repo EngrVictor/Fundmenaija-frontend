@@ -5,50 +5,10 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaLinkedinIn, FaTwitter } from 're
 import { Link } from 'react-router-dom'
 
 const Footer = () => {
-    // useEffect(() => {
-    //     $(".slider").owlCarousel({
-    //         loop: true,
-    //         autoplay: true,
-    //         autoplayTimeout: 5000,
-    //         autoplayHoverPause: true
-    //     });
-    // }, []);
-
-    // Scroll reveal
-    // useEffect(() => {
-    //     window.sr = ScrollReveal();
-
-    //     sr.reveal('.animate-left', {
-    //         origin: 'left',
-    //         duration: 1000,
-    //         distance: '25rem',
-    //         delay: 300
-    //     });
-
-    //     sr.reveal('.animate-right', {
-    //         origin: 'right',
-    //         duration: 1000,
-    //         distance: '25rem',
-    //         delay: 600
-    //     });
-
-    //     sr.reveal('.animate-top', {
-    //         origin: 'top',
-    //         duration: 1000,
-    //         distance: '25rem',
-    //         delay: 600
-    //     });
-
-    //     sr.reveal('.animate-bottom', {
-    //         origin: 'bottom',
-    //         duration: 1000,
-    //         distance: '25rem',
-    //         delay: 600
-    //     });
-    // }, [])
+   
   return (
     <>
-    <footer  style={{ background: "#1e1e26", display: "flex", justifyContent: "center" }}>
+    <footer className='position-absolute w-100'  style={{ background: "#1e1e26", display: "flex", justifyContent: "center" }}>
         <div className="container px-4 d-lg-flex justify-content-between align-items-baseline text-white">
             <span>
                 <div className="d-flex align-items-center my-lg-0 my-5">

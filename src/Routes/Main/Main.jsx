@@ -11,18 +11,63 @@ import donate from '../../assets/images/Donate_img.jpeg'
 // Importing routes
 import Nav from '../../components/Nav/Nav'
 import Footer from '../../components/Footer/Footer'
+import FundRaisers from '../../components/FundRaisers/FundRaisers';
+import Chat from '../../components/ChatBot/Chat';
 
 const Main = () => {
+     // useEffect(() => {
+    //     $(".slider").owlCarousel({
+    //         loop: true,
+    //         autoplay: true,
+    //         autoplayTimeout: 5000,
+    //         autoplayHoverPause: true
+    //     });
+    // }, []);
+
+    // Scroll reveal
+    // useEffect(() => {
+    //     window.sr = ScrollReveal();
+
+    //     sr.reveal('.animate-left', {
+    //         origin: 'left',
+    //         duration: 1000,
+    //         distance: '25rem',
+    //         delay: 300
+    //     });
+
+    //     sr.reveal('.animate-right', {
+    //         origin: 'right',
+    //         duration: 1000,
+    //         distance: '25rem',
+    //         delay: 600
+    //     });
+
+    //     sr.reveal('.animate-top', {
+    //         origin: 'top',
+    //         duration: 1000,
+    //         distance: '25rem',
+    //         delay: 600
+    //     });
+
+    //     sr.reveal('.animate-bottom', {
+    //         origin: 'bottom',
+    //         duration: 1000,
+    //         distance: '25rem',
+    //         delay: 600
+    //     });
+    // }, [])
+
     // am using axios for my fetch cause its more efficient
-//   useEffect(() => {
-//     axios("http://localhost/API/index.php")
-//       .then((data) => console.log(`Backend is connected: ${data.message}`));
-//   }, []);
+    useEffect(() => {
+        axios("http://localhost/API/data/post/read.php")
+        .then((res) => console.log(res.data));
+    }, []);
 
     
   return (
+    <>
+    <Nav/>
     <div className="App">
-        <Nav/>
         {/* Create Routes for all this components */}
         <div className='main-body'>
             <div className='img-cont'>
@@ -51,29 +96,29 @@ const Main = () => {
                 <center><hr></hr></center>
             </div>
             <div className='card-cont'>
-                <div className='card'>
+                <div className='card-home'>
                     <i><BsFillPersonFill/></i>
                     <h1>Individuals</h1>
                     <p>Individuals Who Are In Need Financially Or Medically</p>
                 </div>
-                <div className='card'>
+                <div className='card-home'>
                     <i><FaChurch/></i>
                     <h1>Churches</h1>
                     <p>Churches For Fund Raising And Offerings</p>
                 </div>
-                <div className='card'>
+                <div className='card-home'>
                     <i><MdSchool/></i>
                     <h1>Schools</h1>
                     <p>Schools For Fund Raising.</p>
                 </div>
             </div>
             <div className='card-cont center'>
-                <div className='card'>
+                <div className='card-home'>
                     <i><MdAddBusiness/></i>
                     <h1>Small Scale Business</h1>
                     <p>For Businesses Investment.</p>
                 </div>
-                <div className='card'>
+                <div className='card-home'>
                     <i><MdLocalHospital/></i>
                     <h1>Hospitals</h1>
                     <p>For Medical Donations Like Blood, Body Organ Donors And Volunteers.</p>
@@ -95,17 +140,19 @@ const Main = () => {
             </div>
         </div>
         <section className="section-4">
-        <div className="top-fund">
-            <div>
-                <p>Fund Raisers</p>
-                <h2>Donate Funds to Fundraisers in your community</h2>
+            <div className="top-fund">
+                <div>
+                    <p>Fund Raisers</p>
+                    <h2>Donate Funds to Fundraisers in your community</h2>
+                </div>
+                <div className="btn-cont">
+                    <i><FaArrowCircleLeft/></i>
+                    <i><FaArrowCircleRight/></i>
+                </div>
             </div>
-            <div className="btn-cont">
-                <i><FaArrowCircleLeft/></i>
-                <i><FaArrowCircleRight/></i>
-            </div>
-        </div>
         {/* fetch fund Raiers from REST-API */}
+        {/* carosel here */}
+        {/* <FundRaisers />  */}
         <div className="fund-cards">
             <div className="fund-card">
                 <img src={headerImg}/>
@@ -136,8 +183,10 @@ const Main = () => {
             </div>
         </div>
     </section>
-    <Footer/>  
     </div>
+    <Chat />
+    <Footer/>  
+    </>
   )
 }
 
