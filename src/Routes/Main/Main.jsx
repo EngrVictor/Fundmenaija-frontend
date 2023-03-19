@@ -15,7 +15,7 @@ import FundRaisers from '../../components/FundRaisers/FundRaisers';
 import Chat from '../../components/ChatBot/Chat';
 
 const Main = () => {
-     // useEffect(() => {
+    //  useEffect(() => {
     //     $(".slider").owlCarousel({
     //         loop: true,
     //         autoplay: true,

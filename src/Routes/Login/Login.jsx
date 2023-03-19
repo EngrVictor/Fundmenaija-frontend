@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-// import './login.css'
+import './login.css'
 import img from '../../assets/images/Logo3.png'
+import loginImg from '../../assets/images/loginImage.jpeg'
 import Footer from '../../components/Footer/Footer';
 import Nav from '../../components/Nav/Nav';
 
@@ -19,15 +20,38 @@ function Login() {
 
   return (
     <>
-        <Nav />
-        <section className="d-flex align-items-center min-vh-100 py-3 py-md-0">
-            <div className="container">
-                <div style={{ minWidth: '100%'}} className="card login-card w-100">
-                    <div className="row no-gutters">
-                        <div className="col-md-5">
-                            <img src={img} alt="login" className="login-card-img" />
+        {/* <Nav /> */}
+        <div className="main-login">
+            <div className="login-card">
+                <div className="login-img-cont">
+                    <img src={loginImg} alt="login" className="login-card-img" />
+                </div>
+                <div className="login-form-cont">
+                <p><Link to={'/'}>&larr; home</Link></p>
+                    <div className="brand-wrapper">
+                        <img src={img} alt="logo" className="logo" />
+                        <p>FundMeNaija</p>
+                    </div>
+
+                    <div className="form-cont">
+                        <h4 className="login-card-description">Sign into your account</h4>
+                        <form>
+                            <input type="text" name="username" id="" placeholder='Enter Username' required/>
+                            <input type="password" name="username" id="" placeholder='Enter Password' required/>
+                            <input type="submit" value="Sign In" id='login-btn'/>
+                        </form>
+
+                        <p><Link to={'/passwordreset'} className="forgot-password-link">Forgot password?</Link></p>
+                        <p className="login-card-footer-text">Don't have an account? <Link to={'/account'} className="text-reset">Register here</Link></p>
+                    </div>
+                </div>
+
+                {/* <div style={{ minWidth: '100%'}} className="card login-card">
+                    <div className="login-img-cont">
+                        <div className="">
+                            <img src={loginImg} alt="login" className="login-card-img" />
                         </div>
-                        <div className="col-md-7">
+                        <div className="">
                             <div className="card-body">
                                 <div className="brand-wrapper">
                                     <img src={img} alt="logo" className="logo" />
@@ -58,10 +82,10 @@ function Login() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
-        </section>
-        <Footer />
+        </div>
+        {/* <Footer /> */}
     </>
   )
 }

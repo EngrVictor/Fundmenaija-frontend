@@ -3,6 +3,7 @@
 /*  You attempted to import /Users/user/Desktop/Desktop/fundme project/fundmenaija/src/assets/images/Donate_img.jpeg which falls outside of the project src/ directory. and this path is not the same with my system, so the app crashes.
  Relative imports outside of src/ are not supported.
 You can either move it inside src/, or add a symlink to it from project's node_modules/. */
+
 .main-body {
     display: flex;
     text-align: center;
@@ -213,15 +214,6 @@ p {
     margin-top: 50px;
 }
 
-.btn-cont button {
-    /* background-color: var(--primary); */
-    color: var(--light);
-    padding: 10px 20px;
-    border: none;
-    
-    transition: all 0.5s ease;
-}
-
 .btn-cont * {
     cursor: pointer;
     color: var(--primary)!important;
@@ -297,3 +289,109 @@ p {
     align-items: center;
     padding: 20px;
 }
+
+@media only screen and (max-width: 600px) {
+
+    .main-body {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 0 50px;
+        padding-top: 40px;
+        margin-top: 100px;
+    }
+
+    .main-body  p, .paratext {
+        line-height: 1.6;
+    }
+
+    .main-body * {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .img-cont_1 {
+        display: none;
+    }
+
+    .section-1, .section-2, .section-3, .section-4 {
+        width: 100%;
+        margin: 50px 0;
+        padding: 0 50px;
+        flex-direction: column;
+    }
+
+    .section-1 .text-cont_1 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .section-2 .card-cont {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .section-2 .card-cont:last-child {
+        margin-top: 0;
+    }
+
+    .section-2 .card-home {
+        /* width: 100%; */
+        margin-bottom: 20px;
+    }
+
+    .section-2 .card-home i {
+        font-size: 30px;
+    }
+
+    .section-3 .text-cont_3{
+        width: 100%;
+        /* padding: 0 50px; */
+        margin: 20px 0;
+        flex-direction: column;
+    }
+
+    .section-3 .text-cont_3 .heading_3 {
+        text-decoration: underline var(--primary);
+    }
+
+    .section-4 {
+        width: 100%;
+        padding: 0 20px;
+        /* margin: 50px 0; */
+    }
+    
+    .top-fund {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-cont {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+    }
+
+    .btn-cont * {
+        font-size: 40px;
+    }
+    
+    .btn-cont *:hover {
+       transform: none;
+    }
+    
+    .btn-cont *:active {
+        transform: none;
+    }
+
+    .fund-cards {
+        /* flex-direction: column; */
+        overflow-x: scroll;
+        width: 100%;
+    }
+  }
