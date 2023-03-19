@@ -1,8 +1,15 @@
+.about {
+    background-color: var(--light);
+    height: 100vh;
+    width: 100%;
+}
+
 .about-cont{
     background-color: var(--light);
-    height: 50vh;
-    margin: 30px;
-    padding: 50px 100px;
+    /* height: 50vh; */
+    margin: 70px;
+    padding-top: 30px;
+    /* padding: 50px 100px; */
 }
 
 .about-cont h1{
@@ -15,7 +22,27 @@
 }
 
 .about-cont p{
-    font-size: 20px;
+    /* font-size: 20px; */
     margin-bottom: 10px;
+    line-height: 1.6;
+    word-spacing: 2px;
     color: var(--slight);
+}
+
+@media only screen and (max-width: 600px){
+    .about {
+        background-color: var(--light);
+        height: initial;
+        width: 100%;
+    }
+
+    .about-cont {
+        margin: 30px;
+        margin-top: 90px;
+        padding-top: 30px;
+    }
+
+    .about-cont .section-3{
+        padding: 10px 0;
+    }
 }

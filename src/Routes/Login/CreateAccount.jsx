@@ -3,19 +3,50 @@ import Footer from '../../components/Footer/Footer'
 import Nav from '../../components/Nav/Nav'
 
 function CreateAccount() {
-    useEffect(() => {
-        const nextPrev = e => {
-            console.log('button next clicked')
-        }
-    })
+    
   return (
     <div>
-        <Nav />
-        <br />
-        <br />
-        <br />
+        {/* <Nav /> */}
 
-        <h2>Sign up page</h2>
+        <div className="main-login">
+            <div className="login-card">
+                <div className="login-img-cont">
+                    <img src={test} alt="login" className="login-card-img" />
+                </div>
+                <div className="login-form-cont">
+                    <p><Link to={'/'}>&larr; home</Link></p>
+                    <div className="brand-wrapper">
+                        <img src={img} alt="logo" className="logo" />
+                        <p>FundMeNaija</p>
+                    </div>
+
+                    <div className="form-cont">
+                        <center><h4 className="login-card-description">Create Account</h4></center>
+                        <form>
+                            <input type="text" name="firstname" id="" placeholder='First Name' required/>
+                            <input type="text" name="lastname" id="" placeholder='Last Name' required/>
+                            <input type="number" name="mobile" id="" placeholder='Mobile Number' required/>
+                            <input type="text" name="email" id="" placeholder='Email Address' required/>
+                            <select defaultValue={'default'} required>
+                                <option value='default'>Select Document To Upload</option>
+                                <option value='NIN Document'>NIN Document</option>
+                                <option value='Voters card'>Voters card</option>
+                                <option value='Driver License'>Driver License</option>
+                                <option value='International Password'>International Password</option>
+                            </select>
+                            <input type="file" required/>
+                            <input type="text" name="username" id="" placeholder='Choose Username' required/>
+                            <input type="password" name="password" id="" placeholder='Enter Password' required/>
+                            <input type="password" name="verifyPass" id="" placeholder='Verify Password' required/>
+                            <input type="submit" value="Sign Up" id='login-btn'/>
+                        </form>
+
+                        {/* <p><Link to={'/passwordreset'} className="forgot-password-link">Forgot password?</Link></p> */}
+                        <p className="login-card-footer-text">Already have an account? <Link to={'/login'} className="text-reset">Sign in here</Link></p>
+                    </div>
+                </div>
+            </div>
+        </div>
         {/* <form class='shadow' id="regForm" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data" novalidate>
         <a href="../index.php" class="nav-link text-dark d-flex align-items-center my-4">
             <i class="fa fa-angle-left fa-2x pointer"></i>

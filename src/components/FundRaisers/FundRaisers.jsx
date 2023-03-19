@@ -123,31 +123,6 @@ function FundRaisers() {
             </Carousel>
         )
     }
-    // <section className="content position-relative" id="">
-    //     <div className="container">
-    //         <div className="content">
-                // <div className="slider owl-carousel shadow-md-sm p-lg-4">
-                //     {(issues.length > 0) &&
-                //         <div className="card shadow-sm mx-2" style={{ minHeight: "420px", maxHeight: "420px", height: "420px", border: "0px", borderRadius: "10px" }}>
-                //             <div className="img">
-                //                 <img src={cardImg} alt="error image" />
-                //             </div>
-                //             <div className="content" style={{ position: "relative" }}>
-                //                 <div className="title">NO Fund Raisers Yet</div>
-                //                 <p>Create an Account and deposit money to start raising fund...</p>
-                //                 <div className="btn" style={{ position: "absolute", bottom: "-50px" }}>
-                //                     <Link href="/login" className="btn btn-danger">Start Now</Link>
-                //                 </div>
-                //             </div>
-                //         </div>
-                //     }
-    
-                
-                // </div>
-    //         </div>
-    //     </div>
-    // </section>
-//   )
 }
 
 export default FundRaisers
