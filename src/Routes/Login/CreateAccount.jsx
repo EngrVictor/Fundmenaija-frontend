@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react'
-import Footer from '../../components/Footer/Footer'
-import Nav from '../../components/Nav/Nav'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
+import './login.css'
+import img from '../../assets/images/Logo3.png'
+import test from '../../assets/images/hero-bg.jpeg'
 
 function CreateAccount() {
     
@@ -251,7 +253,7 @@ function CreateAccount() {
             <span class="step"></span> -->
         </div>
     </form> */}
-//     <Footer />
+    {/* <Footer /> */}
     </div>
   )
 }
