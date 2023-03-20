@@ -166,7 +166,9 @@ section{
 } */
 .content{
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
+	justify-content: space-around;
+	padding: 5px;
 }
 .contentBx{
 	padding-right: 30px;
