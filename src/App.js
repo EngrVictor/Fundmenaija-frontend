@@ -17,6 +17,11 @@ import Dashboard from './Routes/user/Dashboard'
 import Fundraisedetails from './Routes/FundraiserDetails/Fundraisedetails'
 import ErrorPage from './Routes/ErrorPage/ErrorPage'
 import Nav from './components/Nav/Nav';
+import Transfer from "./Routes/Dash/pages/transfer/Transfer";
+import Withdraw from "./Routes/Dash/pages/withdraw/Withdraw";
+import Setting from "./Routes/Dash/pages/setting/Setting";
+import RaiseFund from "./Routes/Dash/pages/raiseFund/RaiseFund";
+import Home from "./Routes/Dash/pages/home/Home";
 
 
 function App() {
@@ -34,6 +39,13 @@ function App() {
         <Route path="/admin" element={<Admin/>} />
 
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dash">
+            <Route index element={<Home />} />
+            <Route path="raise" element={<RaiseFund />} />
+            <Route path="transfer" element={<Transfer />} />
+            <Route path="withdraw" element={<Withdraw />} />
+            <Route path="setting" element={<Setting />} />
+          </Route>
         <Route path="/details" element={<Fundraisedetails />} />
         <Route path="/passwordreset" element={<Fundraisedetails />} />
 
