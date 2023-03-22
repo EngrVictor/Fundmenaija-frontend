@@ -8,7 +8,7 @@ const Footer = () => {
    
   return (
     <>
-    <footer className='position-absolute w-100'  style={{ background: "#1e1e26", display: "flex", justifyContent: "center" }}>
+    <footer className='position-absolute w-100'  style={{ background: "#1e1e26", display: "flex", justifyContent: "center", zIndex: '1000' }}>
         <div className="container px-4 d-lg-flex justify-content-between align-items-baseline text-white">
             <span>
                 <div className="d-flex align-items-center my-lg-0 my-5">
@@ -54,9 +54,9 @@ const Footer = () => {
         </div>
     </footer>
 
-    <Link href="#" className="back-to-top nav-link rounded-circle d-flex align-items-center justify-content-center h3"  title="Back-To-Top"><i className="fa fa-angle-up"></i>
-    </Link>
-    {/* <div id="preloader"></div> */}
+    {/* <Link href="#" className="back-to-top nav-link rounded-circle d-flex align-items-center justify-content-center h3"  title="Back-To-Top"><i className="fa fa-angle-up"></i>
+    </Link> */}
+    {/* <div className="preloader"></div> */}
 
     </>
   )

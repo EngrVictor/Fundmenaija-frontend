@@ -7,13 +7,12 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 import cardImg from '../../assets/images/Donate_img.jpeg'
-import testImg from '../../uploads/church.jpg'
 
 function FundRaisers() {
     const [issues, setIssues] = useState([]);
 
     useEffect(() => {
-        axios("http://localhost/API/data/post/read.php")
+        axios("https://fundmenaija.com/API/data/post/read.php")
         .then((res) => {
             // console.log(res.data[0])
             setIssues(res.data)
@@ -46,7 +45,7 @@ function FundRaisers() {
         return (
             <Carousel 
             autoPlay={true} 
-            autoPlaySpeed={1000}
+            autoPlaySpeed={3000}
             showDots={true}
             infinite={true}
             transitionDuration={500}
@@ -68,7 +67,7 @@ function FundRaisers() {
 
                 <div className="card shadow-sm mx-2" style={{ minHeight: "420px", maxHeight: "420px", height: "420px", border: "0px", borderRadius: "10px" }}>
                     <div className="img">
-                        <img src={testImg} alt="error image" />
+                        <img src={'./uploads/church.jpg'} alt="error image" />
                     </div>
                     <div className="content" style={{ position: "relative" }}>
                         <div className="title">NO Fund Raisers Yet</div>
@@ -96,7 +95,7 @@ function FundRaisers() {
 
                 <div className="card shadow-sm mx-2" style={{ minHeight: "420px", maxHeight: "420px", height: "420px", border: "0px", borderRadius: "10px" }}>
                     <div className="img">
-                        <img src={testImg} alt="error image" />
+                        <img src={'./uploads/church.jpg'} alt="error image" />
                     </div>
                     <div className="content" style={{ position: "relative" }}>
                         <div className="title">NO Fund Raisers Yet</div>

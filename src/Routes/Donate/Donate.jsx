@@ -3,15 +3,14 @@ import axios from 'axios'
 import { Link, useParams } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
 import Nav from '../../components/Nav/Nav'
-import img from '../../uploads/church.jpg'
-import img2 from '../../uploads/school.jpeg'
+import './Donate.css'
 
 const Donate = () => {
   // Fetch All issues from DB
   const [issues, setIssues] = useState([]);
 
   useEffect(() => {
-      axios("http://localhost/API/data/post/read.php")
+      axios("https://fundmenaija.com/API/data/post/read.php")
       .then((res) => {
           // console.log(res.data[0])
           setIssues(res.data)
@@ -32,8 +31,9 @@ const Donate = () => {
         <br />
         <br />
         <br />
-        {
-            issues.map(issue =>
+        {issues.length === 0 ? <><h2 style={{ marginBottom: "300px", marginTop: "20px" }}>Loading content...<br />Please wait...</h2><div className="preloader"></div></> : ""}
+            {
+                issues.map(issue =>
                     <section key={issue.id} className="container Fundraiser p-4 bg-white my-4 shadow">
                     <div className="row justify-content-between">
                         <div className='col-md-6 d-flex justify-content-center'>
@@ -74,8 +74,8 @@ const Donate = () => {
                     </div>
                 </section>
                 )
-        }
-
+            }
+        <br />
         <Footer />
     </>
   )

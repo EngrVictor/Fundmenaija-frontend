@@ -14,10 +14,8 @@ import Login from './Routes/Login/Login'
 import CreateAccount from './Routes/Login/CreateAccount'
 import Admin from './Routes/Admin/AdminDash'
 import Dashboard from './Routes/user/Dashboard'
-import Fundraisedetails from './Routes/FundraiserDetails/Fundraisedetails'
 import Paystack from './Routes/Paystack/paystack'
 import ErrorPage from './Routes/ErrorPage/ErrorPage'
-import Nav from './components/Nav/Nav';
 import Transfer from "./Routes/Dash/pages/transfer/Transfer";
 import Withdraw from "./Routes/Dash/pages/withdraw/Withdraw";
 import Setting from "./Routes/Dash/pages/setting/Setting";
@@ -47,9 +45,9 @@ function App() {
             <Route path="transfer" element={<Transfer />} />
             <Route path="withdraw" element={<Withdraw />} />
             <Route path="setting" element={<Setting />} />
-          </Route>
-        <Route path="/details" element={<Fundraisedetails />} />
-        <Route path="/passwordreset" element={<Fundraisedetails />} />
+        </Route>
+        {/* <Route path="/details" element={<Fundraisedetails />} /> */}
+        {/* <Route path="/passwordreset" element={<Fundraisedetails />} /> */}
 
         <Route path="*" element={<ErrorPage/>} />
       </Routes>   
