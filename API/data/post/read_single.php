@@ -22,11 +22,13 @@
   // Create array
   $post_arr = array(
     'id' => $post->id,
-    'title' => $post->title,
-    'body' => $post->body,
-    'author' => $post->author,
-    'category_id' => $post->category_id,
-    'category_name' => $post->category_name
+    'user_id' => $post->user_id,
+    'user_username' => $post->user_username,
+    'avatar' => $post->avatar,
+    'avatar_2' => $post->avatar_2,
+    'issue_title' => $post->issue_title,
+    'issue_body' => $post->issue_body,
+    'issue_time' => $post->issue_time
   );
 
   // Make JSON

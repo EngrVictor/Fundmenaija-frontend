@@ -17,13 +17,13 @@ function Login() {
 
     // making axios call to API
     const handleSubmit = () => {
-        // axios.post('', userData)
-        // .then(res => console.log(res.data))
         if(username === '' || pwd === ''){
             alert('Please Fill out the empty fields')
         }
 
         alert('This page will load soon...')
+        // axios.post('', userData)
+        // .then(res => console.log(res.data))
     }
 
   return (

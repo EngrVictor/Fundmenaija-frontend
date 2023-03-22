@@ -48,7 +48,7 @@
           // Create query
           $query = 'SELECT * FROM ' . $this->table . ' p
                                     LEFT JOIN
-                                      login l ON p.issue_id = l.id
+                                      login l ON p.user_id = l.id
                                     WHERE
                                       p.id = ?
                                     LIMIT 0,1';

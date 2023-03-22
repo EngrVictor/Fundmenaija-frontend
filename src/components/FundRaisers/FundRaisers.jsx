@@ -44,7 +44,14 @@ function FundRaisers() {
 //   return (
     if(issues.length < 1) {
         return (
-            <Carousel responsive={responsive}>
+            <Carousel 
+            autoPlay={true} 
+            autoPlaySpeed={1000}
+            showDots={true}
+            infinite={true}
+            transitionDuration={500}
+            responsive={responsive}
+            >
                 <div className="card shadow-sm mx-2" style={{ minHeight: "420px", maxHeight: "420px", height: "420px", border: "0px", borderRadius: "10px" }}>
                     <div className="img">
                         <img src={cardImg} alt="error image" />
@@ -104,17 +111,27 @@ function FundRaisers() {
         )
     }else{
         return(
-            <Carousel responsive={responsive}>
+            <Carousel 
+            draggable={true}
+            showDots={true}
+            ssr={true} // means to render carousel on server-side.
+            infinite={true}
+            responsive={responsive}
+            autoPlay={true}
+            autoPlaySpeed={3000}
+            customTransition="all .5"
+            transitionDuration={500}
+            >
                 {issues.map((issue, index) => 
                     <div key={issue.id} className="card shadow-sm mx-2" style={{ minHeight: "450px", maxHeight: "450px", height: "450px", border: "px", borderRadius: "10px" }}>
                         <div className="img">
-                            <img src={'../../uploads/'+issue.avatar} alt={issue.avatar} />
+                            <img src={'./uploads/'+issue.avatar} alt={issue.avatar} />
                         </div>
                         <div className="content" style={{ position: "relative" }}>
                             <div className="title">{issue.issue_title}</div>
                             <p>{issue.issue_body.substr(0,75)}...</p>
                             <div style={{ position: "absolute", bottom: "-50px" }}>
-                                <Link href="/login" className="btn btn-danger mr-2">Donate now</Link>
+                                <Link to={"/donate?id="+issue.id} className="btn btn-danger mr-2">Donate now</Link>
                                 <small className='mx-5'>{issue.id} Donations</small>
                             </div>
                         </div>
