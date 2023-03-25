@@ -44,6 +44,7 @@ function App() {
             <Route path="raise" element={<RaiseFund />} />
             <Route path="transfer" element={<Transfer />} />
             <Route path="withdraw" element={<Withdraw />} />
+            <Route path="profile" element={<Setting />} />
             <Route path="setting" element={<Setting />} />
         </Route>
         {/* <Route path="/details" element={<Fundraisedetails />} /> */}

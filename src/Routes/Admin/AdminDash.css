@@ -61,15 +61,15 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-a:hover {
+.admini a:hover {
     color: white;
     text-decoration: none;
 }
 
-body,
+/* body,
 html {
     height: 100%;
-}
+} */
 
 
 

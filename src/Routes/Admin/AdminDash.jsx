@@ -4,7 +4,7 @@ import '../Admin/AdminDash.css'
 function AdminDash() {
   return (
     <div>
-        <section className="dark_bg">
+        <section className="dark_bg admini">
 
 <div id="wrapper">
     <div className="overlay"></div>
