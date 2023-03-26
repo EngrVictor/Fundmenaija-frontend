@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './login.css'
 import img from '../../assets/images/Logo3.png'
 import test from '../../assets/images/hero-bg.jpeg'
@@ -16,30 +17,57 @@ function CreateAccount() {
     const [cpwd, setCpwd] = useState('')
 
     // form data
-    // const userData = () => {
-        const data = {
-            firstname,
-            lastname,
-            number,
-            email,
-            id,
-            image,
-            username,
-            pwd,
-            cpwd
-        }
-    // }
+    const data = {
+        firstname,
+        lastname,
+        number,
+        email,
+        id,
+        image,
+        username,
+        pwd,
+        cpwd
+    }
+
+    // Navigtion for redirect
+    const Navigate = useNavigate()
+
+    // axios API call URL
+    const URL = 'http://localhost/API/data/user/create.php';
 
     // submit form here
     const handleSubmit = () => {
         if(username === '' || firstname === '' || lastname === '' || number === '' || email === '' || id === '' || image === '' || pwd === '' || cpwd === ''){
-            alert('Please Fill out the empty fields')
+            // alert('Please Fill out the empty fields')
+            swal({
+                title: "Account Alert!",
+                text: "Please Fill out the empty fields",
+                icon: "error",
+            });
+        }else if(pwd !== cpwd){
+            // alert('Password mismatch')
+            swal({
+                title: "Account Alert!",
+                text: "Password mismatch",
+                icon: "error",
+            });
+        }else{
+            axios.post(URL, data)
+            .then(res => {
+                if(res.data.status !== false && res.data.message === "Activate Account"){
+                    // redirect to deposit-activate-account
+                    console.log(res.data);
+                    Navigate('/activate_account', res.data);
+                }else{
+                    swal({
+                        title: "Account Alert!",
+                        text: res.data.message,
+                        icon: "error",
+                    });
+                }
+            })
         }
-        if(pwd !== cpwd){
-            alert('Password mismatch')
-        }
-        console.log(data)
-        alert('This page will load soon...')
+        
     }
     
   return (

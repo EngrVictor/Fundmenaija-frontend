@@ -93,8 +93,8 @@
           $this->issue_time = htmlspecialchars(strip_tags($this->issue_time));
 
           // Bind data
-          $stmt->bindParam(':id', $this->user_id);
-          $stmt->bindParam(':username', $this->user_username);
+          $stmt->bindParam(':user_id', $this->user_id);
+          $stmt->bindParam(':user_username', $this->user_username);
           $stmt->bindParam(':avatar', $this->avatar);
           $stmt->bindParam(':avatar_2', $this->avatar_2);
           $stmt->bindParam(':issue_title', $this->issue_title);
@@ -104,11 +104,12 @@
           // Execute query
           if($stmt->execute()) {
             // upload files
-            if(move_uploaded_file($_FILES['avatar']['tmp_name'], 'storage/'.$_FILES['avatar']['name']) && move_uploaded_file($_FILES['avatar_2']['tmp_name'], 'storage/'.$_FILES['avatar_2']['name'])){
+            if(move_uploaded_file($_FILES['avatar']['tmp_name'], '../uploads/'.$_FILES['avatar']['name']) && move_uploaded_file($_FILES['avatar_2']['tmp_name'], '../uploads/'.$_FILES['avatar_2']['name'])){
               // image upload was successful
               return true;
             }else{
               // image upload failed
+              return false;
             }
           }
 

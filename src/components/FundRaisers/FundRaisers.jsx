@@ -59,7 +59,7 @@ function FundRaisers() {
                         <div className="title">NO Fund Raisers Yet</div>
                         <p>Create an Account and deposit money to start raising fund...</p>
                         <div style={{ position: "absolute", bottom: "-50px" }}>
-                            <Link href="/login" className="btn btn-danger mr-2">Start Now</Link>
+                            <Link to="/login" className="btn btn-danger mr-2">Start Now</Link>
                             <small className='mx-5'>{0} donations</small>
                         </div>
                     </div>
@@ -73,7 +73,7 @@ function FundRaisers() {
                         <div className="title">NO Fund Raisers Yet</div>
                         <p>Create an Account and deposit money to start raising fund...</p>
                         <div style={{ position: "absolute", bottom: "-50px" }}>
-                            <Link href="/login" className="btn btn-danger mr-2">Start Now</Link>
+                            <Link to="/login" className="btn btn-danger mr-2">Start Now</Link>
                             <small className='mx-5'>{0} donations</small>
                         </div>
                     </div>
@@ -87,7 +87,7 @@ function FundRaisers() {
                         <div className="title">NO Fund Raisers Yet</div>
                         <p>Create an Account and deposit money to start raising fund...</p>
                         <div style={{ position: "absolute", bottom: "-50px" }}>
-                            <Link href="/login" className="btn btn-danger mr-2">Start Now</Link>
+                            <Link to="/login" className="btn btn-danger mr-2">Start Now</Link>
                             <small className='mx-5'>{0} donations</small>
                         </div>
                     </div>
@@ -101,7 +101,7 @@ function FundRaisers() {
                         <div className="title">NO Fund Raisers Yet</div>
                         <p>Create an Account and deposit money to start raising fund...</p>
                         <div style={{ position: "absolute", bottom: "-50px" }}>
-                            <Link href="/login" className="btn btn-danger mr-2">Start Now</Link>
+                            <Link to="/login" className="btn btn-danger mr-2">Start Now</Link>
                             <small className='mx-5'>{0} Donations</small>
                         </div>
                     </div>

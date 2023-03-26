@@ -35,7 +35,7 @@
         top: '0',
         right: '0',
         height: $(this).outerHeight(true) - 2,
-        marginTop: '1px',
+        marginTop: '8px',
         padding: '6px 11px',
         //borderLeft: '1px solid #CCC',
         cursor: 'pointer',
