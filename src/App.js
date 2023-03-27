@@ -22,6 +22,7 @@ import Setting from "./Routes/Dash/pages/setting/Setting";
 import RaiseFund from "./Routes/Dash/pages/raiseFund/RaiseFund";
 import Home from "./Routes/Dash/pages/home/Home";
 import Activate from './Routes/Activate/Activate';
+import Flutterwave from './components/Flutterwave/Flutterwave';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/activate_account" element={<Activate />} />
         <Route path="/admin" element={<Admin/>} />
         <Route path="/make_payment" element={<Paystack />} />
+        <Route path='/pay' element={<Flutterwave />} />
 
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/dash">

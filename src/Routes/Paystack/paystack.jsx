@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import Footer from '../../components/Footer/Footer'
 import Nav from '../../components/Nav/Nav'
 
@@ -13,7 +14,6 @@ function paystack() {
     const [robot, setRobot] = useState(false)
 
 
-
     const handleSubmit = e => {
         e.preventDefault();
         // console.log("Form submited");
@@ -26,7 +26,15 @@ function paystack() {
                 return runIframe();
             }else{
                 // console.log("PayStack: "+p_method)
-                return payWithPaystack();
+                // return handleFlutterPayment();
+                return handleFlutterPayment({
+                    callback: (response) => {
+                        // send response to backend for further verification b4 crediting user
+                       console.log(response);
+                        closePaymentModal() // this will close the modal programmatically
+                    },
+                    onClose: () => {},
+                  });
             }
         }else{
             console.log("Please Fill out all fields");
@@ -39,44 +47,35 @@ function paystack() {
         if(p_method !== '') {
             if (p_method === 'onepass') {
                 setPayImg('OnePassLogo.png')
-            }else if(p_method === 'paystack') {
-                setPayImg('paystack3.png')
+            }else if(p_method === 'flutterwave') {
+                setPayImg('Flutterwave_.png')
             }
         }
     })
 
-    // PAYSTACK GATEWAY API
-    // PAYSTACK AUTH
-    const payWithPaystack = () => {
-        // e.preventDefault();
-        let handler = PaystackPop.setup({
-            key: 'pk_live_4f0d9358be6a7d2d6eb726920a093e9b4cd3c7c4', 
-            email: "contact@fundmenaija.com",
-            amount: amount * 100,
-            ref: 'FMN'+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-            // label: "Optional string that replaces customer email"
-            onClose: function(){
-                // alert('Window closed.');
-                const answer = confirm('Donation Cancelled. Try Again?');
-                if(answer){
-                    // window.location.href = './pay.php?status=cancelled';
-                    // window.location.href = 'javascript://history.go(-1)';
-                    window.location.href = '#';
-                }else{
-                    // window.location.href = './donate.php'
-                    window.location.href = 'javascript://history.go(-1)';
-                }
-            },
-            callback: function(response){
-                let message = 'Payment completed! Reference: ' + response.reference;
-                alert(message);
-                // windon.location = '/donate?reference='+ response.reference;
-            }
-        });
+    // FLUTTERWAVE GATEWAY API
+    const config = {
+        public_key: process.env.REACT_APP_FLUTTERWAVE_PUBLIC_KEY,
+        tx_ref: Date.now(),
+        amount: amount,
+        currency: 'NGN',
+        payment_options: 'card,mobilemoney,ussd',
+        customer: {
+          email: 'contact.fundmenaija@gmail.com',
+           phone_number: '07052365193',
+          name: donor,
+        },
+        customizations: {
+          title: 'Donation for '+donor,
+          description: 'Fundmenaija Donation',
+          logo: './uploads/logo.png',
+        },
+      };
+    
+      const handleFlutterPayment = useFlutterwave(config);
+    
 
-        handler.openIframe();
-    }   
-
+    // window.location.href = 'javascript://history.go(-1)';
     // ONEPASS GATEWAY
     const runIframe = () => {
         OurpassCheckout.openIframe({
@@ -164,7 +163,7 @@ function paystack() {
                         <select onChange={(e) => setPmethod(e.target.value)} className="form-control" required={true}>
                             <option value={''} disabled={true} selected>Select Donations Method</option>
                             <option value={"onepass"}>OnePass</option>
-                            <option value={'paystack'}>Paystack</option>
+                            <option value={'flutterwave'}>Flutterwave</option>
                         </select>
                         <div className="paymentImg col-2">
                             <img src={'./uploads/'+payImg} className='img-fluid' id="pay-Img" alt={payImg} />

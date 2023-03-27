@@ -1,11 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import Footer from '../../components/Footer/Footer'
 import Nav from '../../components/Nav/Nav'
 
 const Activate = () => {
+  const [username, setUsername] = useState('')
+  const [amount, setAmount] = useState('')
+
+  // Flutterwave configuration
+  const config = {
+    public_key: process.env.REACT_APP_FLUTTERWAVE_PUBLIC_KEY,
+    tx_ref: Date.now(),
+    amount: amount,
+    currency: 'NGN',
+    payment_options: 'card,mobilemoney,ussd',
+    customer: {
+      email: 'contact.fundmenaija@gmail.com', // get email from the session
+       phone_number: '07052365193',
+      name: username,
+    },
+    customizations: {
+      title: 'Donation from '+username,
+      description: 'Fundmenaija Donation',
+      logo: './uploads/logo.png',
+    },
+  };
+
+  const handleFlutterPayment = useFlutterwave(config);
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    alert('Form submitted')
+    // alert('Form submitted')
+    if(username !== '' && amount !== '' && amount >= 200){
+      return handleFlutterPayment({
+          callback: (response) => {
+              // send response to backend for further verification b4 crediting user
+              console.log(response);
+              closePaymentModal() // this will close the modal programmatically
+          },
+          onClose: () => {},
+        });
+    }else{
+        console.log("Please Fill out all fields");
+        alert("Please Fill out all fields");
+    }
   }
   return (
     <>
@@ -19,13 +58,14 @@ const Activate = () => {
 
                 <div className="alert alert-success text-center h5 mb-0 mt-3">Donate to Activate Your Account...!
                 </div>
-                <label htmlFor="u_name" className="form-label">Username</label>
+                <label htmlFor="username" className="form-label">Username</label>
                 <input 
                     type="text" 
-                    id="u_name" className="form-control py-3" 
+                    id="username" className="form-control py-3" 
                     placeholder="Donor's Full Name" 
                     title="Enter Your Full Names"
                     name="donor"
+                    onClick={(e) => setUsername(e.target.value)}
                     required={true}
                 />
 
@@ -39,21 +79,10 @@ const Activate = () => {
                     placeholder="Enter Amount" 
                     title="NOT LESS THAN 200"
                     name="amount"
+                    onClick={(e) => setAmount(e.target.value)}
                     required={true}
                 />
                 {/* <input type="hidden" id="email" value="<?php echo isset($_SESSION['Email']) ? $_SESSION['Email'] : "contact.fundmenaija@gmail.com" ; ?>"> */}
-                <br />
-                  {/* <div className="payment-container">
-                    <select name="p_method" id="p_method" className="form-control" required>
-                        <option value="" disabled selected>Select Donations Method</option>
-                        <option value="onepass">OnePass</option>
-                        <option value="paystack">Paystack</option>
-                     </select>
-                    <div className="paymentImg col-2">
-                        <img  className='img-fluid' id="pay-Img" />
-  
-                     </div>
-                 </div>  */}
                 <br />
                 <span className="d-flex">
                     <input type="checkbox" name="robot" id="robot" required={true} />
