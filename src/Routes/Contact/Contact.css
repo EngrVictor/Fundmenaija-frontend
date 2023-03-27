@@ -1,8 +1,71 @@
 .contact {
     background-color: var(--light);
-    height: 50vh;
+    /* height: 100%; */
     margin: 30px;
-    padding: 50px 100px;
+    margin-top: 70px;
     display: flex;
     justify-content: space-between;
+    width: 95%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.contact-left {
+    align-self: center;
+}
+
+.contact-left h5 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 20px;
+}
+
+.contact-right {
+    width: 50%;
+    padding: 30px;
+}
+
+.contact-right .form-grp, .form-grp * {
+    margin-bottom: 10px;
+}
+
+.contact-right input {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.contact-right input:focus {
+    outline: none;
+    border: 1px solid var(--primary);
+}
+
+.contact-right input[type='submit'] {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease;
+    margin-top: 10px;
+}
+.contact-right input[type='submit']:hover {
+    background: var(--dark);
+}
+
+@media only screen and (max-width: 600px){
+    .contact {
+        background-color: var(--light);
+        height: initial;
+        width: 100%;
+        flex-direction: column;
+        border: none;
+        margin: 70px 10px;
+    }
+
+    .contact-right {
+        width: 100%;
+        padding: 30px;
+    }
 }

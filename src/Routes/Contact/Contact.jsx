@@ -9,9 +9,9 @@ const Contact = () => {
     <Nav />
     <div className='contact'>
         <div className='contact-left'>
-            <h3>Lagos, Nigeria</h3>
-            <h3>contact.fundmenaija@gmail.com</h3>
-            <h3>contact@fundmenaija.com</h3>
+            <h5>Lagos, Nigeria</h5>
+            <h5>contact.fundmenaija@gmail.com</h5>
+            <h5>contact@fundmenaija.com</h5>
         </div>
         <div className='contact-right'>
             <form>
@@ -35,11 +35,10 @@ const Contact = () => {
                         <input type="tel" name="" id="" placeholder='Enter your Phone Number'/>
                     </div>
                 </div>
-                <div className="form-grp">
-                    
-                </div>
+                <input type="submit" value="Contact" />
             </form>
         </div>
+        
     </div>
     <Footer />
     </>

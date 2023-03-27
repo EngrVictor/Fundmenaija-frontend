@@ -9,39 +9,21 @@ const List = () => {
     <div className='side'><Sidebar/></div>
     <div className='main'>
       <Navbar/>
-      <div className="fund-raise">
-      <div className="left">
-     <h1>Raise Fund</h1>
-    <form action="#" className="fund-raising">
-        <p>Enter Fundraising details</p>
-        <div className="form-group">
-          <label>Title</label>
-          <input type="text" name="fund-title" id="fund-title" />
-        </div>
-        <div className="form-group">
-        <label>Target Amount</label>
-          <input type="number" name="fund-target" id="fund-target" />
-        </div>
-        <div className="form-group">
-          <label>Enter Fundraising details</label>
-          <textarea name="fundraising-details" id="fundraising-details" ></textarea>
-        </div>
+      <div className="withdraw">
+        <h1>Transfer Funds</h1>
 
-        <div>
-          <label>Add two images</label>
-          <div className="images">
-            <input type="file" name="" id="" />
-            <input type="file" name="" id="" />
+        <form>
+          <div className="form-group">
+            <label>From</label>
+            <input type="number" name="account" id="" placeholder="Sender's account no" />
           </div>
-        </div>
+          <div className="form-group">
+            <label>To</label>
+            <input type="number" name="account" id="" placeholder="Recipiant's account no"/>
+          </div>
 
-        <input type="submit" value="Create" />
-        
-    </form>
-     </div>
-     <div className="right">
-      <h1>Preview</h1>
-     </div>
+          <input type="submit" value="Send"/>
+        </form>
       </div>
     </div>
     

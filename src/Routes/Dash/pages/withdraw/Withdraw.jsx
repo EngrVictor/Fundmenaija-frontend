@@ -9,18 +9,20 @@ const Login = () => {
     <div className='side'><Sidebar/></div>
     <div className='main'>
       <Navbar/>
-      <div className="fund-raise">
-        <h3>Withdraw Funds</h3>
+      <div className="withdraw">
+        <h1>Withdraw Funds</h1>
 
         <form>
           <div className="form-group">
             <label>From</label>
-            <input type="number" name="account" id="" />
+            <input type="number" name="account" id="" placeholder="Sender's account no" />
           </div>
           <div className="form-group">
             <label>To</label>
-            <input type="number" name="account" id="" />
+            <input type="number" name="account" id="" placeholder="Recipiant's account no"/>
           </div>
+
+          <input type="submit" value="Withdraw"/>
         </form>
       </div>
     </div>

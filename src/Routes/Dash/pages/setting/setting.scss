@@ -1,0 +1,69 @@
+.setting {
+    width: 95%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+
+    h3, h4 {
+        margin-top: 5px;
+        margin-bottom: 15px;
+        text-decoration: underline;
+    }
+
+    form {
+        width: 100%;
+
+        input, select {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+
+            &::-webkit-inner-spin-button {
+                display: none;
+            }
+
+            &:focus {
+                outline: none;
+                border: 1px solid var(--primary);
+            }
+
+            &[type='date'] {
+
+               &::-webkit-inner-spin-button {
+                display: none;
+               }
+            }
+
+            &[type='submit'] {
+                background: var(--primary);
+                color: #fff;
+                border: none;
+                cursor: pointer;
+                transition: all .3s ease;
+                margin-top: 10px;
+
+                &:hover {
+                    background: var(--dark);
+                }
+            }
+        }
+    }
+
+    .line {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .form-group {
+            width: 48%;
+            padding: 10px;
+
+            * {
+                margin-bottom: 5px;
+            }
+        }
+
+        
+    }
+}

@@ -16,15 +16,15 @@ const New = () => {
           <p>Enter Fundraising details</p>
           <div className="form-group">
             <label>Title</label>
-            <input type="text" name="fund-title" id="fund-title" />
+            <input type="text" name="fund-title" id="fund-title" placeholder='Enter a valid Title'/>
           </div>
           <div className="form-group">
           <label>Target Amount</label>
-            <input type="number" name="fund-target" id="fund-target" />
+            <input type="number" name="fund-target" id="fund-target" placeholder='E.g 100'/>
           </div>
           <div className="form-group">
             <label>Enter Fundraising details</label>
-            <textarea name="fundraising-details" id="fundraising-details" ></textarea>
+            <textarea name="fundraising-details" id="fundraising-details" placeholder='Enter fund raising details'></textarea>
           </div>
 
           <div>

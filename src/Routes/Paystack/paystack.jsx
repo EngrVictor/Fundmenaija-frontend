@@ -124,7 +124,7 @@ function paystack() {
     <>
     <Nav />
       <div>
-        <div className="row mx-3 my-5">
+        <div className="row mx-3 my-5 pay">
             <div style={{ margin: "130px auto 20px" }} className="col-md-6">
                 <form id="form" onSubmit={handleSubmit} className="form-group px-lg-5 p-4 shadow bg-white">
                     <div className='text-center'>

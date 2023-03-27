@@ -77,8 +77,7 @@ function Login() {
                         </form>
 
                         <p><Link to={'/passwordreset'} className="forgot-password-link">Forgot password?</Link></p>
-                        <p className="login-card-footer-text">Don't have an account? 
-                            <Link to={'/account'} className="text-reset">Register here</Link>
+                        <p className="login-card-footer-text">Don't have an account? <Link to={'/account'} className="text-reset">Register here</Link>
                         </p>
                     </div>
                 </div>
