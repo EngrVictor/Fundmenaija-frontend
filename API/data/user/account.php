@@ -67,7 +67,7 @@
         if (!preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $Email)) {
             $Email_error = "* Invalid Email ID";
         } else {
-            $Email = mysqli_real_escape_string($conn, $_POST['email']);
+            $Email = mysqli_real_escape_string($conn, $user->email);
             $query2 = "SELECT * FROM customer_detail WHERE C_Email = '" . $Email . "'";
 
             $result2 =  mysqli_query($conn, $query2);
@@ -94,9 +94,9 @@
 
     // -------- USERNAME AND PASSWORD VERIFICATION -----------
 
-    $Username = $_POST['Username'];
-    $Password  = $_POST['Password'];
-    $ConfirmPass = $_POST['ConfirmPass'];
+    $Username = $user->username;
+    $Password  = $user->pwd;
+    $ConfirmPass = $user->cpwd;
 
     $UsernameError =  $PasswordError  = $ConfirmPassError = $Id_type_error = false;
 
@@ -107,7 +107,7 @@
         } else {
             $UsernameError = false;
 
-            $Username = mysqli_real_escape_string($conn, $_POST['Username']);
+            $Username = mysqli_real_escape_string($conn, $Username);
             $query3 = "SELECT * FROM login WHERE Username = '" . $Username . "'";
 
             $result3 =  mysqli_query($conn, $query3);
