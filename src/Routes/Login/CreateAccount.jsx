@@ -33,7 +33,7 @@ function CreateAccount() {
     const Navigate = useNavigate()
 
     // axios API call URL
-    const URL = 'http://localhost/API/data/user/create.php';
+    const URL = 'https://fundmenaija.com/API/data/user/create.php';
 
     // submit form here
     const handleSubmit = () => {

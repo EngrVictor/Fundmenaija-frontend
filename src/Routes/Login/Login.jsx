@@ -18,7 +18,7 @@ function Login() {
     const Navigate = useNavigate()
 
     // axios API call URL
-    const URL = 'http://localhost/API/data/user/login.php';
+    const URL = 'https://fundmenaija.com/API/data/user/login.php';
 
     // making axios call to API
     const handleSubmit = () => {
