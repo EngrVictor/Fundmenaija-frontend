@@ -35,7 +35,9 @@ const Activate = () => {
     if(username !== '' && amount !== '' && amount >= 200){
       return handleFlutterPayment({
           callback: (response) => {
-              // send response to backend for further verification b4 crediting user
+              // send response to backend for further 
+              // verification b4 crediting user
+              // redirect to dashboard
               console.log(response);
               closePaymentModal() // this will close the modal programmatically
           },
