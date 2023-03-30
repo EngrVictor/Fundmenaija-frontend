@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './home.scss'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Navbar from '../../components/navbar/Navbar'
@@ -6,6 +8,18 @@ import Feature from '../../components/feature/Feature'
 import Chart from '../../components/chart/Chart'
 
 const Home = () => {
+  // check if user is NOT logged in
+  const win = window.sessionStorage
+  const Navigate = useNavigate()
+
+  useEffect(() => {
+    if(win.getItem('username') === '' || win.getItem('accountNo') === ''){
+
+      Navigate('/login', {}); 
+      return alert('Your are NOT logged in')
+    }
+  }, [])
+
   return (
     <div className="home">
         <Sidebar />

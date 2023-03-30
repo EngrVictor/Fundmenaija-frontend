@@ -24,6 +24,9 @@ function paystack() {
             if(p_method === 'onepass'){
                 // console.log("OnePass: "+p_method)
                 return runIframe();
+            }else if(p_method === 'monnify'){
+                alert('monnify coming soon')
+                // return monnify()
             }else{
                 // console.log("PayStack: "+p_method)
                 // return handleFlutterPayment();
@@ -49,6 +52,8 @@ function paystack() {
                 setPayImg('OnePassLogo.png')
             }else if(p_method === 'flutterwave') {
                 setPayImg('Flutterwave_.png')
+            }else if(p_method === 'monnify') {
+                setPayImg('monnify.png')
             }
         }
     })
@@ -73,6 +78,9 @@ function paystack() {
       };
     
       const handleFlutterPayment = useFlutterwave(config);
+
+    // Monnify API call
+
     
 
     // window.location.href = 'javascript://history.go(-1)';
@@ -162,8 +170,9 @@ function paystack() {
                     <div className="payment-container">
                         <select onChange={(e) => setPmethod(e.target.value)} className="form-control" required={true}>
                             <option value={''} disabled={true} selected>Select Donations Method</option>
-                            <option value={"onepass"}>OnePass</option>
                             <option value={'flutterwave'}>Flutterwave</option>
+                            <option value={'monnify'}>Monnify</option>
+                            <option value={"onepass"}>OnePass</option>
                         </select>
                         <div className="paymentImg col-2">
                             <img src={'./uploads/'+payImg} className='img-fluid' id="pay-Img" alt={payImg} />

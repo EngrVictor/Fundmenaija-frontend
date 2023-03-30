@@ -13,8 +13,10 @@ import Nav from '../../components/Nav/Nav'
 import Footer from '../../components/Footer/Footer'
 import FundRaisers from '../../components/FundRaisers/FundRaisers';
 import Chat from '../../components/ChatBot/Chat';
+import { useNavigate } from 'react-router-dom';
 
 const Main = () => {
+    const Navigate = useNavigate()
      // useEffect(() => {
     //     $(".slider").owlCarousel({
     //         loop: true,
@@ -57,13 +59,6 @@ const Main = () => {
     //     });
     // }, [])
 
-    // am using axios for my fetch cause its more efficient
-    // useEffect(() => {
-    //     axios("http://localhost/API/data/post/read.php")
-    //     .then((res) => console.log(res.data));
-    // }, []);
-
-    
   return (
     <>
     <Nav/>
@@ -76,14 +71,14 @@ const Main = () => {
             <div className='text-cont'>
                 <h1 className='heading'><span>FUND</span> AND GET <span>FUNDED</span></h1>
                 <h4 className='paratext'>Fund and raise funds from people globally to support your projects, bills, daily needs and other things from FundMeNaija today</h4>
-                <button className='btn-home'>Donate Today</button>
+                <button onClick={() => Navigate('/donate', {})} className='btn-home'>Donate Today</button>
             </div>
         </div>
         <div className='section-1'>
             <div className='text-cont_1'>
                 <h1 className='heading_1'>Raising money has never been easy..</h1>
                 <p>We provide you with opportunity to dream and see it come to pass by helping you get the needed funding on any project, plans or other basic needs.</p>
-                <button className='btn-home'>Get started</button>
+                <button onClick={() => Navigate('/login', {})} className='btn-home'>Get started</button>
             </div>
             <div className='img-cont_1'>
                 <img src={donate} alt="donate" />

@@ -31,7 +31,7 @@ const Donate = () => {
         <br />
         <br />
         <br />
-        {issues.length === 0 ? <><h2 style={{ marginBottom: "300px", marginTop: "20px" }}>Loading content...<br />Please wait...</h2><div className="preloader"></div></> : ""}
+        {issues.length === 0 ? <><h3 style={{ marginBottom: "300px", marginTop: "20px" }}>Loading content...<br />Please wait...</h3><div className="preloader"></div></> : ""}
             {
                 issues.map(issue =>
                     <section key={issue.id} className="container Fundraiser p-4 bg-white my-4 shadow">

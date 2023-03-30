@@ -1,9 +1,22 @@
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './raiseFund.scss'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Navbar from '../../components/navbar/Navbar'
 
 
 const New = () => {
+  // check if user is NOT logged in
+  const win = window.sessionStorage
+  const Navigate = useNavigate()
+
+  useEffect(() => {
+    if(win.getItem('username') === '' || win.getItem('accountNo') === ''){
+
+      Navigate('/login', {}); 
+      return
+    }
+  }, [])
   return (
     <div className='new-fund'>
       <div className='side'><Sidebar/></div>
@@ -35,7 +48,7 @@ const New = () => {
             </div>
           </div>
 
-          <input type="submit" value="Create" />
+          <input type="submit" value="Create FundRaiser" />
           
       </form>
        </div>

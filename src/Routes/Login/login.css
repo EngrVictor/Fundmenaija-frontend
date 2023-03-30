@@ -111,7 +111,7 @@
 }
 
 #login-btn:hover {
-    background: var(--bs-orange);
+    /* background: var(--bs-orange); */
 }
 
 @media only screen and (max-width: 600px) {

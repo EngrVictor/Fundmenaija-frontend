@@ -8,20 +8,38 @@ import axios from 'axios';
 function Login() {
     const [username, setUsername] = useState('')
     const [pwd, setPwd] = useState('')
+    const [disabled, setDisabled] = useState(false)
+    const [value, setValue] = useState('Sign in')
 
     const data = {
         username,
         pwd
     }
 
+    const win = window.sessionStorage
+    // win.setItem('username', '')
+    // console.log(win.getItem('username'))
+
+    // check if user is alreeady logged in
+    useEffect(() => {
+        if(win.getItem('username') !== '' && win.getItem('accountNo') !== ''){
+
+            Navigate('/dash', {});
+            // console.log(win.getItem('username'))
+        }
+    }, [])
+
     // Navigtion for redirect
     const Navigate = useNavigate()
 
     // axios API call URL
-    const URL = 'https://fundmenaija.com/API/data/user/login.php';
+    const URL = 'https://fundmenaija.com/API/data/user/login.php'; // production
+    // const URL = 'http://localhost/API/data/user/login.php'; // development
 
     // making axios call to API
     const handleSubmit = () => {
+        setValue('Please Wait...')
+        setDisabled(true)
         if(username === '' || pwd === ''){
             // alert('Please Fill out the empty fields')
             swal({
@@ -29,13 +47,19 @@ function Login() {
                 text: "Please Fill out the empty fields",
                 icon: "error",
             });
+            setValue('Sign in')
+            setDisabled(false)
         }else{
             // alert('This page will load soon...')
             axios.post(URL, data)
             .then(res => {
                 if(res.data.status !== false && res.data.message === "Login Success"){
-                    // redirect to dashboard
-                    console.log(res.data);
+                    // create session && redirect to dashboard
+                    // console.log(res.data);
+                    
+                    win.setItem('username', res.data.username)
+                    win.setItem('accountNo', res.data.accountNo)
+                    
                     Navigate('/dash', res.data);
                 }else{
                     swal({
@@ -43,6 +67,9 @@ function Login() {
                         text: res.data.message,
                         icon: "error",
                     });
+                    // try again
+                    setValue('Sign in')
+                    setDisabled(false)
                 }
             })
         }
@@ -68,12 +95,11 @@ function Login() {
                     <div className="form-cont">
                         <h4 className="login-card-description">Sign into your account</h4>
                         <form>
-                            <input type="text" name="username" id="" onChange={(e) => setUsername(e.target.value)} placeholder='Enter Username' required={true} />
-                            <input type="password" name="username" id="" onChange={(e) => setPwd(e.target.value)} placeholder='Enter Password' required={true} />
+                            <input type="text" name="username" onChange={(e) => setUsername(e.target.value)} placeholder='Enter Username' required={true} />
+                            <input type="password" name="username" onChange={(e) => setPwd(e.target.value)} placeholder='Enter Password' required={true} />
+                            {/* implement reCaptcha */}
 
-                            {/* <div class="g-recaptcha" data-sitekey="6LfrfKojAAAAAODoGvue1lDe1LUngjxC-ys45BHd" className="form-control"></div> */}
-
-                            <input type="button" onClick={handleSubmit} value="Sign In" id='login-btn'/>
+                            <input type="button" style={{ opacity: disabled && "0.6" }} onClick={handleSubmit} value={value} id='login-btn' disabled={disabled} />
                         </form>
 
                         <p><Link to={'/passwordreset'} className="forgot-password-link">Forgot password?</Link></p>
@@ -85,6 +111,10 @@ function Login() {
         </div>
     </>
   )
+}
+
+const disableBtn = {
+    opacity: "0.6"
 }
 
 export default Login   

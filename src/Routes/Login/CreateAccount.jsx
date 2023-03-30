@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './login.css'
@@ -16,6 +16,9 @@ function CreateAccount() {
     const [pwd, setPwd] = useState('')
     const [cpwd, setCpwd] = useState('')
 
+    const [disabled, setDisabled] = useState(false)
+    const [value, setValue] = useState('Sign Up')
+
     // form data
     const data = {
         firstname,
@@ -28,15 +31,29 @@ function CreateAccount() {
         pwd,
         cpwd
     }
+    const win = window.sessionStorage
+    // win.setItem('username', '')
+    // console.log(win.getItem('username'))
 
+    // check if user is alreeady logged in
+    useEffect(() => {
+        if(win.getItem('username') !== '' && win.getItem('accountNo') !== ''){
+
+            Navigate('/dash', {});
+            // console.log(win.getItem('username'))
+        }
+    }, [])
     // Navigtion for redirect
     const Navigate = useNavigate()
 
     // axios API call URL
-    const URL = 'https://fundmenaija.com/API/data/user/create.php';
+    // const URL = 'https://fundmenaija.com/API/data/user/create.php'; // production
+    const URL = 'http://localhost/API/data/user/create.php'; // development
 
     // submit form here
     const handleSubmit = () => {
+        setValue('Creating Account...')
+        setDisabled(true)
         if(username === '' || firstname === '' || lastname === '' || number === '' || email === '' || id === '' || image === '' || pwd === '' || cpwd === ''){
             // alert('Please Fill out the empty fields')
             swal({
@@ -44,6 +61,8 @@ function CreateAccount() {
                 text: "Please Fill out the empty fields",
                 icon: "error",
             });
+            setValue('Sign Up')
+            setDisabled(false)
         }else if(pwd !== cpwd){
             // alert('Password mismatch')
             swal({
@@ -51,12 +70,17 @@ function CreateAccount() {
                 text: "Password mismatch",
                 icon: "error",
             });
+            setValue('Sign Up')
+            setDisabled(false)
         }else{
             axios.post(URL, data)
             .then(res => {
                 if(res.data.status !== false && res.data.message === "Activate Account"){
                     // redirect to deposit-activate-account
                     console.log(res.data);
+                    win.setItem('username', res.data.username)
+                    win.setItem('accountNo', res.data.accountNo)
+
                     Navigate('/activate_account', res.data);
                 }else{
                     swal({
@@ -64,8 +88,20 @@ function CreateAccount() {
                         text: res.data.message,
                         icon: "error",
                     });
+                    setValue('Sign Up')
+                    setDisabled(false)
                 }
             })
+            .catch((error) => {
+                swal({
+                    title: "Server Error!",
+                    text: error.message,
+                    icon: "error",
+                });
+                setValue('Sign Up')
+                setDisabled(false)
+            })
+            
         }
         
     }
@@ -103,7 +139,7 @@ function CreateAccount() {
                             <input type="text" name="username" onChange={(e) => setUsername(e.target.value)} placeholder='Choose Username' required/>
                             <input type="password" onChange={(e) => setPwd(e.target.value)} name="password" placeholder='Enter Password' required/>
                             <input type="password" onChange={(e) => setCpwd(e.target.value)} name="Cpwd" placeholder='Confirm Password' required/>
-                            <input type="button" onClick={handleSubmit} value="Sign Up" id='login-btn'/>
+                            <input type="button" style={{ opacity: disabled && "0.6" }} onClick={handleSubmit} id='login-btn' value={value} disabled={disabled}/>
                         </form>
 
                         {/* <p><Link to={'/passwordreset'} className="forgot-password-link">Forgot password?</Link></p> */}

@@ -51,6 +51,7 @@ const Nav = () => {
                 <li><Link to={'/about'}>About</Link></li>
                 <li><Link to={'/contact'}>Contact</Link></li>
                 <li><Link to={'/donate'}>Donate</Link></li>
+                {/* check if user is already logged in */}
                 <li><Link to={'/login'}>Sign In</Link></li>
                 <li className='sign-btn'><Link to={'/account'}>Sign Up</Link></li>
             </ul>

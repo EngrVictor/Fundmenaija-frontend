@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import {
   Routes,
   Route,
@@ -13,7 +12,6 @@ import Donate from './Routes/Donate/Donate'
 import Login from './Routes/Login/Login'
 import CreateAccount from './Routes/Login/CreateAccount'
 import Admin from './Routes/Admin/AdminDash'
-// import Dashboard from './Routes/user/Dashboard'
 import Paystack from './Routes/Paystack/paystack'
 import ErrorPage from './Routes/ErrorPage/ErrorPage'
 import Transfer from "./Routes/Dash/pages/transfer/Transfer";
@@ -23,13 +21,12 @@ import RaiseFund from "./Routes/Dash/pages/raiseFund/RaiseFund";
 import Home from "./Routes/Dash/pages/home/Home";
 import Activate from './Routes/Activate/Activate';
 import Flutterwave from './components/Flutterwave/Flutterwave';
+import Logout from "./Routes/Logout/Logout";
 
 
 function App() {
   return (
     <>
-      {/* <Nav /> */}
-      {/* <h2>{message === "" ? "Connecting to Backend..." : `${message} from backend`}</h2> */}
       <Routes>
         <Route exact path="/" element={<Main />} />
         <Route path="/about" element={<About />} />
@@ -41,8 +38,8 @@ function App() {
         <Route path="/admin" element={<Admin/>} />
         <Route path="/make_payment" element={<Paystack />} />
         <Route path='/pay' element={<Flutterwave />} />
+        <Route path="/logout" element={<Logout />} />
 
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/dash">
             <Route index element={<Home />} />
             <Route path="raise" element={<RaiseFund />} />
@@ -54,6 +51,7 @@ function App() {
         {/* <Route path="/details" element={<Fundraisedetails />} /> */}
         {/* <Route path="/passwordreset" element={<Fundraisedetails />} /> */}
 
+        <Route path="/error" element={<ErrorPage/>} />
         <Route path="*" element={<ErrorPage/>} />
       </Routes>   
     </>             
