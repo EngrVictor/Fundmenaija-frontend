@@ -1,7 +1,6 @@
 {
   "name": "fundmenaija",
   "version": "1.1.0",
-  "proxy": "https://fundmenaija.com/API/data",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",

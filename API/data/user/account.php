@@ -11,27 +11,31 @@
     $user = json_decode(file_get_contents("php://input"));
     // $user = file_get_contents("php://input");
 
-    // echo json_encode(
-    //     array("status"=> false,'message' => 'subitted to backend')
-    //   );
-    // return;
+
+    echo json_encode(
+        array("status"=> false, 'data'=>$user, 'message' => 'subitted to backend')
+      );
+    return;
 
     // -------------- Basic Detail Section ------------
-    $Account_Type = "Savings";
-    $Account_Status = "Inactive";
-    $Balance = "0.0";
-    // Storing Form values in variable
-    $First_Name = mysqli_real_escape_string($conn, $user->FirstName);
-    $Last_Name = mysqli_real_escape_string($conn, $user->Last_Name);
-    $Mobile_Number = mysqli_real_escape_string($conn, $user->Mobile_Number);
-    $Id_type = mysqli_real_escape_string($conn, $user->Id_type);
-    $Account_Number = date('ndyHisL');
+    // $Account_Type = "Savings";
+    // $Account_Status = "Inactive";
+    // $Balance = "0.0";
+    // // Storing Form values in variable
+    // $First_Name = mysqli_real_escape_string($conn, $user->FirstName);
+    // $Last_Name = mysqli_real_escape_string($conn, $user->Last_Name);
+    // $Mobile_Number = mysqli_real_escape_string($conn, $user->Mobile_Number);
+    // $Id_type = mysqli_real_escape_string($conn, $user->Id_type);
+    // $Account_Number = date('ndyHisL');
+    // $Email = mysqli_real_escape_string($conn, $user->email);
+    // $Username = mysqli_real_escape_string($conn,$user->username);
+    // $Password  = mysqli_real_escape_string($conn,$user->pwd);
+    // $ConfirmPass = mysqli_real_escape_string($conn,$user->cpwd);
 
     if (strlen($Account_Number) > 12) {
         $Account_Number = substr($Account_Number, 0, -1);
     }
 
-    $Email = mysqli_real_escape_string($conn, $user->email);
 
     //  Error Variables
     $First_Name_error =  $Last_Name_error = null;
@@ -40,11 +44,11 @@
 
     // Validate Name of customer
     /* 
-            1] Preg_match_all(): This function check any number is avaible in string or not
-            2] !\d+! : passing this regular expression in above function which conatin numeric data pattern
-            3] Varible : this parameter contains string to be check
-            4] logic explain: if() ant numeric value found in string and it is == 1 
-        
+        1] Preg_match_all(): This function check any number is avaible in string or not
+        2] !\d+! : passing this regular expression in above function which conatin numeric data pattern
+        3] Varible : this parameter contains string to be check
+        4] logic explain: if() ant numeric value found in string and it is == 1 
+    
      */
 
     if (preg_match_all('!\d+!', $First_Name) == 1) {
@@ -67,7 +71,7 @@
         if (!preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $Email)) {
             $Email_error = "* Invalid Email ID";
         } else {
-            $Email = mysqli_real_escape_string($conn, $user->email);
+            $Email = mysqli_real_escape_string($conn, $Email);
             $query2 = "SELECT * FROM customer_detail WHERE C_Email = '" . $Email . "'";
 
             $result2 =  mysqli_query($conn, $query2);
@@ -93,10 +97,6 @@
     // ++++++++++++++ Basic Detail Ends Here ++++++++++++++++
 
     // -------- USERNAME AND PASSWORD VERIFICATION -----------
-
-    $Username = $user->username;
-    $Password  = $user->pwd;
-    $ConfirmPass = $user->cpwd;
 
     $UsernameError =  $PasswordError  = $ConfirmPassError = $Id_type_error = false;
 

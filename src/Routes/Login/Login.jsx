@@ -33,8 +33,12 @@ function Login() {
     const Navigate = useNavigate()
 
     // axios API call URL
-    const URL = 'https://fundmenaija.com/API/data/user/login.php'; // production
+    // const URL = 'https://fundmenaija.com/API/data/user/login.php'; // production
     // const URL = 'http://localhost/API/data/user/login.php'; // development
+
+    const URL = process.env.NODE_ENV === 'Production' ? 'https://fundmenaija.com/API/data/user/login.php' : 'http://localhost/API/data/user/login.php';
+
+    // console.log(URL)
 
     // making axios call to API
     const handleSubmit = () => {
@@ -72,6 +76,16 @@ function Login() {
                     setDisabled(false)
                 }
             })
+            .catch((error) => {
+                swal({
+                    title: "Connection Failed",
+                    text: error.message,
+                    icon: "error",
+                });
+                setValue('Sign in')
+                setDisabled(false)
+            })
+            
         }
 
     }

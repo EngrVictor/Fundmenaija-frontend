@@ -48,7 +48,9 @@ function CreateAccount() {
 
     // axios API call URL
     // const URL = 'https://fundmenaija.com/API/data/user/create.php'; // production
-    const URL = 'http://localhost/API/data/user/create.php'; // development
+    // const URL = 'http://localhost/API/data/user/create.php'; // development
+
+    const URL = process.env.NODE_ENV === 'production' ? 'https://fundmenaija.com/API/data/user/create.php' : 'http://localhost/API/data/user/create.php';
 
     // submit form here
     const handleSubmit = () => {
@@ -94,7 +96,7 @@ function CreateAccount() {
             })
             .catch((error) => {
                 swal({
-                    title: "Server Error!",
+                    title: "Connection Failed",
                     text: error.message,
                     icon: "error",
                 });
@@ -116,7 +118,7 @@ function CreateAccount() {
                     <img src={test} alt="login" className="login-card-img" />
                 </div>
                 <div className="login-form-cont">
-                    <p><Link to={'/'}>&larr; home</Link></p>
+                    <p><Link to={'/'}>&larr; Home</Link></p>
                     <div className="brand-wrapper">
                         <img src={img} alt="logo" className="logo" />
                         <p>FundMeNaija</p>

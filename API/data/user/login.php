@@ -70,12 +70,13 @@
                         $_SESSION['verifyCode'] = $row['Username'];
                         // $_SESSION['id'] = $row['ID'];
                         $_SESSION['accountNo'] = $row['AccountNo'];   
+                        $_SESSION['id'] = $row['id'];   
                         
                         // replaced with google recaptcha && LOGIN instead
                         // header("Location: ../user/twostepverify.php");
 
                         echo json_encode(
-                            array("status"=> true,'message' => 'Login Success', "username" => $_SESSION['username'], "accountNo" => $_SESSION['accountNo'])
+                            array("status"=> true,'message' => 'Login Success', "username" => $_SESSION['username'], "accountNo" => $_SESSION['accountNo'], "user_id" => $_SESSION['id'])
                           );
                         // header('Location: /dash');
                         mysqli_close($conn);

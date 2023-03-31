@@ -2,7 +2,7 @@
   // Headers
   header('Access-Control-Allow-Origin: *');
   header('Content-Type: application/json');
-  header('Access-Control-Allow-Methods: POST');
+  header('Access-Control-Allow-Methods: POST, PUT, GET');
   header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
   include_once '../../config/Database.php';
@@ -22,18 +22,18 @@
   $post->user_username = $data->user_username;
   $post->avatar = $data->avatar;
   $post->avatar_2 = $data->avatar_2;
-  $post->issue_title = $data->issue_title;
-  $post->issue_body = $data->issue_body;
-  $post->issue_time = $data->issue_time;
+  $post->issue_title = $data->title;
+  $post->issue_body = $data->detail . ' Target: ' .$data->target;
+  $post->issue_time = date('now');
 
   // Create post
   if($post->create()) {
     echo json_encode(
-      array('message' => 'Fund Raiser Created Successfully')
+      array("status" => true,'message' => 'Success')
     );
   } else {
     echo json_encode(
-      array('message' => 'Requst failed to create Fund Raiser')
+      array("status" => false,'message' => 'Failed')
     );
   }
 
