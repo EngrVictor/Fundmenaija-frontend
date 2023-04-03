@@ -15,8 +15,9 @@ const Home = () => {
   useEffect(() => {
     if(win.getItem('username') === '' || win.getItem('accountNo') === ''){
 
+      alert('Your are NOT logged in')
       Navigate('/login', {}); 
-      return alert('Your are NOT logged in')
+      return;
     }
   }, [])
 

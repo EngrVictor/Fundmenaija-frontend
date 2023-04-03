@@ -47,7 +47,7 @@ function Login() {
         if(username === '' || pwd === ''){
             // alert('Please Fill out the empty fields')
             swal({
-                title: "Account Alert!",
+                title: "Alert!",
                 text: "Please Fill out the empty fields",
                 icon: "error",
             });
@@ -63,6 +63,7 @@ function Login() {
                     
                     win.setItem('username', res.data.username)
                     win.setItem('accountNo', res.data.accountNo)
+                    win.setItem('user_id', res.data.user_id)
                     
                     Navigate('/dash', res.data);
                 }else{

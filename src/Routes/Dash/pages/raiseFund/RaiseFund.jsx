@@ -31,7 +31,7 @@ const New = () => {
     const [value, setValue] = useState("Create FundRaiser")
 
     const data = {
-      user_id: win.getItem('id'),
+      user_id: win.getItem('user_id'),
       user_username: win.getItem('username'),
       title,
       target,
@@ -46,6 +46,7 @@ const New = () => {
     // submitting Form here
     const handleSubmit = (e) => {
         e.preventDefault()
+
         setValue('Please Wait...')
         setDisabled(true)
         if(title === '' || target === '' || detail === '' || avatar === '' || avatar_2 === '' || avatar === null || avatar_2 === null){
@@ -59,11 +60,20 @@ const New = () => {
             setDisabled(false)
         }else{
             // alert('This page will load soon...')
-            axios.post(URL, data)
+            axios.post(URL, data, {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            })
             .then(res => {
                 if(res.status !== false && res.message === "Success"){
                     // create session && redirect to dashboard
                     console.log(res.data);
+                    swal({
+                      title: "Fund Riase Successful!",
+                      text: res.message,
+                      icon: "success",
+                  });
                     Navigate('/dash', res.data);
                 }else{
                     console.log("FAILED__"+res.data);
@@ -104,7 +114,7 @@ const New = () => {
             <label>Title</label>
             <input 
               type="text" 
-              name="fund-title" 
+              name="issue_title" 
               id="fund-title" 
               placeholder='Enter a valid Title'
               onChange={(e) => setTitle(e.target.value)}
@@ -114,7 +124,7 @@ const New = () => {
           <label>Target Amount</label>
             <input 
               type="number" 
-              name="fund-target" 
+              name="target" 
               id="fund-target" 
               placeholder='E.g 2,000'
               onChange={(e) => setTarget(e.target.value)}
@@ -123,7 +133,7 @@ const New = () => {
           <div className="form-group">
             <label>Enter Fundraising details</label>
             <textarea 
-              name="fundraising-details" 
+              name="issue_body" 
               id="fundraising-details" 
               placeholder='Enter fund raising details'
               onChange={(e) => setDetail(e.target.value)}
@@ -132,22 +142,20 @@ const New = () => {
 
           <div>
             <label>Add two images</label>
-            <div className="images">
+            {/* <div className="images"> */}
               <input
                 className="form-control" 
                 type="file" 
-                name="" 
-                id=""
-                onChange={(e) => setAvatar(e.target.value)} 
+                name="avatar" 
+                onChange={(e) => setAvatar(e.target.files[0])} 
               />
               <input
                 className="form-control" 
                 type="file" 
-                name="" 
-                id=""
-                onChange={(e) => setAvatar_2(e.target.value)} 
+                name="avatar_2" 
+                onChange={(e) => setAvatar_2(e.target.files[0])} 
               />
-            </div>
+            {/* </div> */}
           </div>
           <input 
             style={{ opacity: disabled && "0.6" }}
