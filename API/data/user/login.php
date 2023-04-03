@@ -68,9 +68,8 @@
 
                         $_SESSION['username'] = $row['Username'];
                         $_SESSION['verifyCode'] = $row['Username'];
-                        // $_SESSION['id'] = $row['ID'];
-                        $_SESSION['accountNo'] = $row['AccountNo'];   
-                        $_SESSION['id'] = $row['id'];   
+                        $_SESSION['id'] = $row['ID'];
+                        $_SESSION['accountNo'] = $row['AccountNo'];
                         
                         // replaced with google recaptcha && LOGIN instead
                         // header("Location: ../user/twostepverify.php");
@@ -81,9 +80,7 @@
                         // header('Location: /dash');
                         mysqli_close($conn);
                     } else {
-                        echo json_encode(
-                            array("status"=> false,'message' => 'Account not Activated')
-                          );
+                        
                         // header("Location: ../user/login.php?error=Account not Activated");
                         exit();
                     }

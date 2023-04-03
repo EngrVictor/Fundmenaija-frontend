@@ -1,8 +1,8 @@
 <?php
     // Headers
-    header('Access-Control-Allow-Origin: *');
-    header('Content-Type: application/json');
-    header('Access-Control-Allow-Methods: POST');
+    header('Access-Control-Allow-Origin: http:localhost:3000');
+    header('Content-Type: application/json, charset=utf-8');
+    header('Access-Control-Allow-Methods: POST, PUT, GET');
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
     include_once '../../config/conn.php';
@@ -13,7 +13,7 @@
 
 
     echo json_encode(
-        array("status"=> false, 'data'=>$user, 'message' => 'subitted to backend')
+        array("status"=> false, 'data'=>$user, 'post'=>$_POST, 'file'=>$_FILES, 'message' => 'subitted to backend')
       );
     return;
 
@@ -52,15 +52,24 @@
      */
 
     if (preg_match_all('!\d+!', $First_Name) == 1) {
-        $First_Name_error = "* Numeric value not allowed in First Name";
+        // $First_Name_error = "* Numeric value not allowed in First Name";
+        echo json_encode(
+            array("status"=> false,'message' => 'Numeric value not allowed in First Name')
+          );
     }
     if (preg_match_all('!\d+!', $Last_Name) == 1) {
-        $Last_Name_error = "* Numeric value not allowed in Last Name";
+        // $Last_Name_error = "* Numeric value not allowed in Last Name";
+        echo json_encode(
+            array("status"=> false,'message' => 'Numeric value not allowed in Last Name')
+          );
     }
     // Phone verification here
 
     if (!is_numeric($Mobile_Number) || is_null($Mobile_Number) || !preg_match('/^[0-9]{11}+$/', $Mobile_Number)) {
-        $Mobile_Number_error = "Invalid Mobile Number";
+        // $Mobile_Number_error = "Invalid Mobile Number";
+        echo json_encode(
+            array("status"=> false,'message' => 'Invalid Mobile Number')
+          );
     }
 
 
@@ -69,7 +78,10 @@
 
     if (!empty($Email)) {
         if (!preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $Email)) {
-            $Email_error = "* Invalid Email ID";
+            // $Email_error = "* Invalid Email ID";
+            echo json_encode(
+                array("status"=> false,'message' => 'Invalid Email ID')
+              );
         } else {
             $Email = mysqli_real_escape_string($conn, $Email);
             $query2 = "SELECT * FROM customer_detail WHERE C_Email = '" . $Email . "'";
@@ -77,21 +89,33 @@
             $result2 =  mysqli_query($conn, $query2);
 
             if (mysqli_num_rows($result2) > 0) {
-                $Email_error = "* Email Already Exist";
+                // $Email_error = "* Email Already Exist";
+                echo json_encode(
+                    array("status"=> false,'message' => 'Email Already Exist')
+                  );
             }
         }
     } else {
-        $Email_error = "* Enter Your Email";
+        // $Email_error = "* Enter Your Email";
+        echo json_encode(
+            array("status"=> false,'message' => 'Enter Valid Email')
+          );
     }
 
     // ************************* Id_type Validation ****************************
     if (!empty($Id_type)) {
         $match = '/^[a-zA-Z]$/';
         if (!preg_match_all($match, $Id_type)) {
-            $Id_type_error = "* Invalid Pincode";
+            // $Id_type_error = "* Invalid Pincode";
+            echo json_encode(
+                array("status"=> false,'message' => 'Invalid Pincode')
+              );
         }
     } else {
-        $Id_type_error = "* Select A Valid ID Card";
+        // $Id_type_error = "* Select A Valid ID Card";
+        echo json_encode(
+            array("status"=> false,'message' => 'Select A Valid ID Card')
+          );
     }
 
     // ++++++++++++++ Basic Detail Ends Here ++++++++++++++++
@@ -103,7 +127,10 @@
     if (!empty($Username)) {
         if (!preg_match_all('/^[A-Za-z]{1}[A-Za-z0-9]{5,31}$/', $Username)) {
 
-            $UsernameError = "* Please Enter Valid Username";
+            // $UsernameError = "* Please Enter Valid Username";
+            echo json_encode(
+                array("status"=> false,'message' => 'Please Enter Valid Username')
+              );
         } else {
             $UsernameError = false;
 
@@ -113,29 +140,44 @@
             $result3 =  mysqli_query($conn, $query3);
 
             if (mysqli_num_rows($result3) > 0) {
-                $UsernameError = "* Username Already Exist";
+                // $UsernameError = "* Username Already Exist";
+                echo json_encode(
+                    array("status"=> false,'message' => 'Username Already Exist')
+                  );
             }
         }
     } else {
-        $UsernameError = "* Username Cannot Empty";
+        // $UsernameError = "* Username Cannot Empty";
+        echo json_encode(
+            array("status"=> false,'message' => 'Username Cannot Empty')
+          );
     }
 
     // ------------- Password Verification ---------------
     if (!empty($Password)) {
         if (!preg_match_all('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}$/m', $Password)) {
-            $PasswordError  = "* Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character";
+            // $PasswordError  = "* Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character";
+            echo json_encode(
+                array("status"=> false,'message' => 'Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character')
+              );
         } else {
             $hashPass = md5($Password);
             $PasswordError = false;
         }
     } else {
-        $PasswordError = "Password Cannot be empty";
+        // $PasswordError = "Password Cannot be empty";
+        echo json_encode(
+            array("status"=> false,'message' => 'Password Cannot be empty')
+          );
     }
 
     if (!empty($ConfirmPass)) {
 
         if ($ConfirmPass != $Password) {
-            $ConfirmPassError = "Please Enter same Password";
+            // $ConfirmPassError = "Please Enter same Password";
+            echo json_encode(
+                array("status"=> false,'message' => 'Please Enter same Password')
+              );
         } else {
         // Activate Handler   #########################################
             $ConfirmPassError = false;
@@ -145,6 +187,7 @@
             $_SESSION['username'] = $Account_Number;
             $_SESSION['verifyCode'] = $Account_Number;
             // $_SESSION['id'] = $row['ID'];
+            $_SESSION['user_id'] = mysqli_insert_id($conn); // NONE TESTED
             $_SESSION['accountNo'] = $Account_Number;  
             $_SESSION['AccountNo'] = $Account_Number; 
 
@@ -152,12 +195,15 @@
             // header('Location: ../auth/activateAccount.php');
             echo json_encode(
                 array("status"=> true,'message' => 'Activate Account')
-              );
+            );
 
         // Activate Handler    ###########################################
         }
     } else {
-        $ConfirmPassError = "Please Confirm Password";
+        // $ConfirmPassError = "Please Confirm Password";
+        echo json_encode(
+            array("status"=> false,'message' => 'Please Confirm Password')
+          );
     }
 
     // ----------- Random Color Hex Generator for Profile ----------------------- 
@@ -224,7 +270,7 @@
                 // $Pan_destinationFile = 'customer_data/Pan_doc/' . $Pan_Unique_Name;
 
                 // Adharcard Destination Variable
-                $Adhar_destinationFile = './uploads/profile_image/' . $Adhar_Unique_Name;
+                $Adhar_destinationFile = 'uploads/profile_image/' . $Adhar_Unique_Name;
 
 
                 // Validating All Error Are values are null or not means checking any error in form or not
@@ -239,7 +285,7 @@
                         // echo "file Uploaded successfully";
                         try {
                             // mysql query for customer table
-                            $Upload_query = "INSERT INTO `customer_detail`(`Account_No`, `C_First_Name`, `C_Last_Name`,  `C_Mobile_No`, `C_Email`, `Id_type`, `C_Adhar_Doc`, `C_Pan_Doc`, `ProfileColor`, `ProfileImage`, `Bio`) VALUES('$Account_Number', '$First_Name', '$Last_Name', '$Mobile_Number', '$Email','$Id_type','$Adhar_destinationFile', '$Adhar_destinationFile', '$hex', 'Not Available', 'Biolography')";
+                            $Upload_query = "INSERT INTO `customer_detail`(`Account_No`, `C_First_Name`, `C_Last_Name`,  `C_Mobile_No`, `C_Email`, `Id_type`, `C_Adhar_Doc`, `C_Pan_Doc`, `ProfileColor`, `ProfileImage`, `Bio`) VALUES('$Account_Number', '$First_Name', '$Last_Name', '$Mobile_Number', '$Email','$Id_type','$Adhar_destinationFile', '$Adhar_destinationFile', '$hex', 'Not Available', 'Biography')";
                             // use $Adhar_destinationFile as $profile Image
 
                             // sql query for login table
@@ -268,26 +314,41 @@
                             // sendOTPMail($Email, $_SESSION['otp']);
                         } catch (Exception $e) {
                             // echo "Could NOT Process Image. Try Again";
-                            $Adhar_Up_error = "Could NOT Process Image. Try Again";
+                            // $Adhar_Up_error = "Could NOT Process Image. Try Again";
+                            echo json_encode(
+                                array("status"=> false,'message' => 'Could NOT Process Image. Try Again')
+                              );
                             // echo 'Message: ' . $e->getMessage();
                         }
                     }else{
                         // echo "Files could not be uploaded. Try Again";
-                        $Adhar_Up_error = 'Files could not be uploaded. Try Again';
+                        // $Adhar_Up_error = 'Files could not be uploaded. Try Again';
+                        echo json_encode(
+                            array("status"=> false,'message' => 'Files could not be uploaded. Try Again')
+                          );
                     }
                 }
             } else {
                 // $Pan_Up_error = 'Invalid file extention';
-                $Adhar_Up_error = 'Invalid file extention';
+                // $Adhar_Up_error = 'Invalid file extention';
+                echo json_encode(
+                    array("status"=> false,'message' => 'Invalid file extention')
+                  );
                 // echo ('Invalid file extention');
             }
         } else {
             // echo "File is too large";
-            $Adhar_Up_error = 'File is too large';
+            // $Adhar_Up_error = 'File is too large';
+            echo json_encode(
+                array("status"=> false,'message' => 'File is too large')
+              );
         }
     } else {
         // echo " Please Give name to file";
-        $Adhar_Up_error = 'Please Give name to file';
+        // $Adhar_Up_error = 'Please Give name to file';
+        echo json_encode(
+            array("status"=> false,'message' => 'Please Give name to file')
+          );
     }
 
 

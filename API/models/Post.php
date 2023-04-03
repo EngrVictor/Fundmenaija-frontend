@@ -11,6 +11,7 @@
     public $avatar;
     public $avatar_2;
     public $issue_title;
+    public $target;
     public $issue_body;
     public $issue_time;
 
@@ -22,7 +23,7 @@
     // Get All Issues
     public function read() {
       // Create query
-      $query = 'SELECT l.Username as username, p.id, p.user_id, p.user_username, p.avatar, p.avatar_2, p.issue_title, p.issue_body, p.issue_time
+      $query = 'SELECT l.Username as username, p.id, p.user_id, p.user_username, p.avatar, p.avatar_2, p.issue_title, p.target, p.issue_body, p.issue_time
                                 FROM ' . $this->table . ' p
                                 LEFT JOIN
                                   login l ON p.user_id = l.ID
@@ -71,6 +72,7 @@
           $this->avatar = $row['avatar'];
           $this->avatar_2 = $row['avatar_2'];
           $this->issue_title = $row['issue_title'];
+          $this->target = $row['target'];
           $this->issue_body = $row['issue_body'];
           $this->issue_time = $row['issue_time'];
     }
@@ -78,7 +80,7 @@
     // Create Post
     public function create() {
           // Create query
-          $query = 'INSERT INTO ' . $this->table . ' SET user_id = :user_id, user_username = :user_username, avatar = :avatar, avatar_2 = :avatar_2, issue_title = :issue_title, issue_body = :issue_body, issue_time = :issue_time';
+          $query = 'INSERT INTO ' . $this->table . ' SET user_id = :user_id, user_username = :user_username, avatar = :avatar, avatar_2 = :avatar_2, issue_title = :issue_title, target = :target, issue_body = :issue_body, issue_time = :issue_time';
 
           // Prepare statement
           $stmt = $this->conn->prepare($query);
@@ -89,6 +91,7 @@
           $this->avatar = htmlspecialchars(strip_tags($this->avatar));
           $this->avatar_2 = htmlspecialchars(strip_tags($this->avatar_2));
           $this->issue_title = htmlspecialchars(strip_tags($this->issue_title));
+          $this->target = htmlspecialchars(strip_tags($this->target));
           $this->issue_body = htmlspecialchars(strip_tags($this->issue_body));
           $this->issue_time = htmlspecialchars(strip_tags($this->issue_time));
 
@@ -98,17 +101,22 @@
           $stmt->bindParam(':avatar', $this->avatar);
           $stmt->bindParam(':avatar_2', $this->avatar_2);
           $stmt->bindParam(':issue_title', $this->issue_title);
+          $stmt->bindParam(':target', $this->target);
           $stmt->bindParam(':issue_body', $this->issue_body);
           $stmt->bindParam(':issue_time', $this->issue_time);
+
+// #############  Validate Image and files before uploadinto the db
 
           // Execute query
           if($stmt->execute()) {
             // upload files
-            if(move_uploaded_file($_FILES['avatar']['tmp_name'], '../uploads/'.$_FILES['avatar']['name']) && move_uploaded_file($_FILES['avatar_2']['tmp_name'], '../uploads/'.$_FILES['avatar_2']['name'])){
+            $destination = $_SERVER['DOCUMENT_ROOT'].'/uploads/' . $this->avatar;
+            if(move_uploaded_file($_FILES['avatar']['tmp_name'], $destination) && move_uploaded_file($_FILES['avatar_2']['tmp_name'], 'uploads/'.basename($this->avatar_2))){
               // image upload was successful
               return true;
             }else{
               // image upload failed
+              echo json_encode(["message" => "File Upload Failed"]);
               return false;
             }
           }
