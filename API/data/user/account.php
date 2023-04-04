@@ -1,9 +1,9 @@
 <?php
     // Headers
-    header('Access-Control-Allow-Origin: http:localhost:3000');
+    header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json, charset=utf-8');
     header('Access-Control-Allow-Methods: POST, PUT, GET');
-    header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
+    header('Access-Control-Allow-Headers: Access-Control-Allow-Origin,Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
     include_once '../../config/conn.php';
 
@@ -12,25 +12,25 @@
     // $user = file_get_contents("php://input");
 
 
-    echo json_encode(
-        array("status"=> false, 'data'=>$user, 'post'=>$_POST, 'file'=>$_FILES, 'message' => 'subitted to backend')
-      );
-    return;
+    // echo json_encode(
+    //     array("status"=> false, 'data'=>$user, 'post'=>$_POST, 'file'=>$_FILES, 'message' => 'subitted to backend')
+    //   );
+    // return;
 
     // -------------- Basic Detail Section ------------
-    // $Account_Type = "Savings";
-    // $Account_Status = "Inactive";
-    // $Balance = "0.0";
-    // // Storing Form values in variable
-    // $First_Name = mysqli_real_escape_string($conn, $user->FirstName);
-    // $Last_Name = mysqli_real_escape_string($conn, $user->Last_Name);
-    // $Mobile_Number = mysqli_real_escape_string($conn, $user->Mobile_Number);
-    // $Id_type = mysqli_real_escape_string($conn, $user->Id_type);
-    // $Account_Number = date('ndyHisL');
-    // $Email = mysqli_real_escape_string($conn, $user->email);
-    // $Username = mysqli_real_escape_string($conn,$user->username);
-    // $Password  = mysqli_real_escape_string($conn,$user->pwd);
-    // $ConfirmPass = mysqli_real_escape_string($conn,$user->cpwd);
+    $Account_Type = "Savings";
+    $Account_Status = "Inactive";
+    $Balance = "0.0";
+    // Storing Form values in variable
+    $First_Name = mysqli_real_escape_string($conn, $_POST['firstname']);
+    $Last_Name = mysqli_real_escape_string($conn, $_POST['lastname']);
+    $Mobile_Number = mysqli_real_escape_string($conn, $_POST['mobile']);
+    $Id_type = mysqli_real_escape_string($conn, $_POST['id_type']);
+    $Account_Number = date('ndyHisL');
+    $Email = mysqli_real_escape_string($conn, $_POST['email']);
+    $Username = mysqli_real_escape_string($conn,$_POST['username']);
+    $Password  = mysqli_real_escape_string($conn,$_POST['pwd']);
+    $ConfirmPass = mysqli_real_escape_string($conn,$_POST['cpwd']);
 
     if (strlen($Account_Number) > 12) {
         $Account_Number = substr($Account_Number, 0, -1);
@@ -56,12 +56,14 @@
         echo json_encode(
             array("status"=> false,'message' => 'Numeric value not allowed in First Name')
           );
+        exit();
     }
     if (preg_match_all('!\d+!', $Last_Name) == 1) {
         // $Last_Name_error = "* Numeric value not allowed in Last Name";
         echo json_encode(
             array("status"=> false,'message' => 'Numeric value not allowed in Last Name')
           );
+        exit();
     }
     // Phone verification here
 
@@ -70,6 +72,7 @@
         echo json_encode(
             array("status"=> false,'message' => 'Invalid Mobile Number')
           );
+        exit();
     }
 
 
@@ -100,6 +103,7 @@
         echo json_encode(
             array("status"=> false,'message' => 'Enter Valid Email')
           );
+        exit();
     }
 
     // ************************* Id_type Validation ****************************
@@ -108,7 +112,7 @@
         if (!preg_match_all($match, $Id_type)) {
             // $Id_type_error = "* Invalid Pincode";
             echo json_encode(
-                array("status"=> false,'message' => 'Invalid Pincode')
+                array("status"=> false,'message' => 'Invalid ID Type')
               );
         }
     } else {
@@ -116,6 +120,7 @@
         echo json_encode(
             array("status"=> false,'message' => 'Select A Valid ID Card')
           );
+        exit();
     }
 
     // ++++++++++++++ Basic Detail Ends Here ++++++++++++++++
@@ -151,6 +156,7 @@
         echo json_encode(
             array("status"=> false,'message' => 'Username Cannot Empty')
           );
+        exit();
     }
 
     // ------------- Password Verification ---------------
@@ -169,6 +175,7 @@
         echo json_encode(
             array("status"=> false,'message' => 'Password Cannot be empty')
           );
+        exit();
     }
 
     if (!empty($ConfirmPass)) {
@@ -187,14 +194,14 @@
             $_SESSION['username'] = $Account_Number;
             $_SESSION['verifyCode'] = $Account_Number;
             // $_SESSION['id'] = $row['ID'];
-            $_SESSION['user_id'] = mysqli_insert_id($conn); // NONE TESTED
+            
             $_SESSION['accountNo'] = $Account_Number;  
             $_SESSION['AccountNo'] = $Account_Number; 
 
 
             // header('Location: ../auth/activateAccount.php');
             echo json_encode(
-                array("status"=> true,'message' => 'Activate Account')
+                array("status"=> true,'message' => 'Account Created')
             );
 
         // Activate Handler    ###########################################
@@ -204,6 +211,7 @@
         echo json_encode(
             array("status"=> false,'message' => 'Please Confirm Password')
           );
+        exit();
     }
 
     // ----------- Random Color Hex Generator for Profile ----------------------- 
@@ -228,7 +236,7 @@
     // echo $hex;
     // Storing Form values in variable
     // Adhar Card Variable
-    $Adhar_Files = $_FILES['AdharCardUp'];
+    $Adhar_Files = $_FILES['image'];
     $Adhar_fileName = $Adhar_Files['name'];
     $Adhar_fileName = preg_replace('/\s/', '_', $Adhar_fileName); // replacing space with underscore
     $Adhar_fileType = $Adhar_Files['type'];
@@ -240,7 +248,7 @@
     // Array storing file extention global version
     $Valid_Extention = array('png', 'jpg', 'jpeg');
 
-    // ************************************ Validating Pan Card Document **********************************************
+    // ***************** Validating uploaded Card Document ***********************************
 
     // use built in function ( pathinfo() ) to seprate file name and store them in seprate variable
 
@@ -299,6 +307,8 @@
                             mysqli_query($conn, $Upload_query) or die(mysqli_error($conn));
                             mysqli_query($conn, $login_query) or die(mysqli_error($conn));
                             mysqli_query($conn, $account_query) or die(mysqli_error($conn));
+
+                            $_SESSION['user_id'] = mysqli_insert_id($conn); //NONE TESTED
                             // Sending Email
                             // ########### Alternative Email
                             // require_once('../auth/auth_mail.php');
@@ -324,7 +334,7 @@
                         // echo "Files could not be uploaded. Try Again";
                         // $Adhar_Up_error = 'Files could not be uploaded. Try Again';
                         echo json_encode(
-                            array("status"=> false,'message' => 'Files could not be uploaded. Try Again')
+                            array("status"=> false,'message' => 'Your could not be uploaded. Try Again')
                           );
                     }
                 }
@@ -349,6 +359,7 @@
         echo json_encode(
             array("status"=> false,'message' => 'Please Give name to file')
           );
+        exit();
     }
 
 
