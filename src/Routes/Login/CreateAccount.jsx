@@ -8,9 +8,9 @@ import test from '../../assets/images/hero-bg.jpeg'
 function CreateAccount() {
     const [firstname, setFirstname] = useState('')
     const [lastname, setLastname] = useState('')
-    const [number, setNumber] = useState('')
+    const [mobile, setMobile] = useState('')
     const [email, setEmail] = useState('')
-    const [id, setId] = useState('')
+    const [id_type, setId_type] = useState('')
     const [image, setImage] = useState('')
     const [username, setUsername] = useState('')
     const [pwd, setPwd] = useState('')
@@ -23,9 +23,9 @@ function CreateAccount() {
     const data = {
         firstname,
         lastname,
-        number,
+        mobile,
         email,
-        id,
+        id_type,
         image,
         username,
         pwd,
@@ -50,13 +50,13 @@ function CreateAccount() {
     // const URL = 'https://fundmenaija.com/API/data/user/create.php'; // production
     // const URL = 'http://localhost/API/data/user/create.php'; // development
 
-    const URL = process.env.NODE_ENV === 'production' ? 'https://fundmenaija.com/API/data/user/create.php' : 'http://localhost/API/data/user/create.php';
+    const URL = process.env.NODE_ENV === 'Production' ? 'https://fundmenaija.com/API/data/user/account.php' : 'http://localhost/API/data/user/account.php';
 
     // submit form here
     const handleSubmit = () => {
         setValue('Creating Account...')
         setDisabled(true)
-        if(username === '' || firstname === '' || lastname === '' || number === '' || email === '' || id === '' || image === '' || pwd === '' || cpwd === ''){
+        if(username === '' || firstname === '' || lastname === '' || mobile === '' || email === '' || id === '' || image === '' || pwd === '' || cpwd === ''){
             // alert('Please Fill out the empty fields')
             swal({
                 title: "Account Alert!",
@@ -77,21 +77,31 @@ function CreateAccount() {
         }else{
             axios.post(URL, data, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    'Access-Control-Allow-Origin': URL,
+                    'Access-Control-Allow-Methods': 'POST, PUT, GET',
+                    'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With'
                 }
             })
             .then(res => {
-                if(res.data.status !== false && res.data.message === "Activate Account"){
+                if(res.data.status !== false && res.data.message === "Account Created"){
                     // redirect to deposit-activate-account
                     console.log(res.data);
                     win.setItem('username', res.data.username)
                     win.setItem('user_id', res.data.user_id)
                     win.setItem('accountNo', res.data.accountNo)
 
+                    swal({
+                        title: res.data.message,
+                        text: "Proceed to Activate Account",
+                        icon: "success",
+                    });
+
                     Navigate('/activate_account', res.data);
                 }else{
+                    console.log(res.data);
                     swal({
-                        title: "Account Alert!",
+                        title: "Sign up Failed",
                         text: res.data.message,
                         icon: "error",
                     });
@@ -133,19 +143,19 @@ function CreateAccount() {
                         <form encType='multipart/form-data'>
                             <input type="text" onChange={(e) => setFirstname(e.target.value)} name="firstname" placeholder='First Name' required/>
                             <input type="text" onChange={(e) => setLastname(e.target.value)} name="lastname" placeholder='Last Name' required/>
-                            <input type="tel" onChange={(e) => setNumber(e.target.value)} name="mobile" placeholder='Mobile Number' required/>
+                            <input type="tel" onChange={(e) => setMobile(e.target.value)} name="mobile" placeholder='Mobile Number' required/>
                             <input type="email" onChange={(e) => setEmail(e.target.value)} name="email" placeholder='Email Address' required/>
-                            <select defaultValue={'default'} onChange={(e) => setId(e.target.value)} required>
+                            <select defaultValue={'default'} name='id_type' onChange={(e) => setId_type(e.target.value)} required>
                                 <option value='default'>Select Document To Upload</option>
                                 <option value='NIN Document'>NIN Document</option>
                                 <option value='Voters card'>Voters card</option>
                                 <option value='Driver License'>Driver License</option>
                                 <option value='International Password'>International Password</option>
                             </select>
-                            <input type="file" accept='image/png,jpg,jpeg' onChange={(e) => setImage(e.target.files[0])} required/>
+                            <input type="file" name='file' className='form-control' onChange={(e) => setImage(e.target.files[0])} required/>
                             <input type="text" name="username" onChange={(e) => setUsername(e.target.value)} placeholder='Choose Username' required/>
-                            <input type="password" onChange={(e) => setPwd(e.target.value)} name="password" placeholder='Enter Password' required/>
-                            <input type="password" onChange={(e) => setCpwd(e.target.value)} name="Cpwd" placeholder='Confirm Password' required/>
+                            <input type="password" title='Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character' onChange={(e) => setPwd(e.target.value)} name="pwd" placeholder='Enter Password' required/>
+                            <input type="password" title='Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character' onChange={(e) => setCpwd(e.target.value)} name="Cpwd" placeholder='Confirm Password' required/>
                             <input type="button" style={{ opacity: disabled && "0.6" }} onClick={handleSubmit} id='login-btn' value={value} disabled={disabled}/>
                         </form>
 

@@ -2,10 +2,22 @@ import React, { useState } from 'react'
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import Footer from '../../components/Footer/Footer'
 import Nav from '../../components/Nav/Nav'
+import { useNavigate } from 'react-router-dom';
 
 const Activate = () => {
   const [username, setUsername] = useState('')
   const [amount, setAmount] = useState('')
+
+  const win = window.sessionStorage
+  const Navigate = useNavigate()
+
+  if(win.getItem('username') === '' || win.getItem('user_id') === '' || win.getItem('accountNo') === ''){
+    Navigate('/account', {})
+    // win.setItem('username', res.data.username)
+    // win.setItem('user_id', res.data.user_id)
+    // win.setItem('accountNo', res.data.accountNo)
+  }
+
 
   // Flutterwave configuration
   const config = {
