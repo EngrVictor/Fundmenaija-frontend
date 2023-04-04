@@ -142,7 +142,7 @@ function CreateAccount() {
                                 <option value='Driver License'>Driver License</option>
                                 <option value='International Password'>International Password</option>
                             </select>
-                            <input type="file" accept='image/png,jpg,jpeg' onChange={(e) => setImage(e.target.files[0])} required/>
+                            <input type="file" className='form-control' accept='image/png,jpg,jpeg' onChange={(e) => setImage(e.target.files[0])} required/>
                             <input type="text" name="username" onChange={(e) => setUsername(e.target.value)} placeholder='Choose Username' required/>
                             <input type="password" onChange={(e) => setPwd(e.target.value)} name="password" placeholder='Enter Password' required/>
                             <input type="password" onChange={(e) => setCpwd(e.target.value)} name="Cpwd" placeholder='Confirm Password' required/>
