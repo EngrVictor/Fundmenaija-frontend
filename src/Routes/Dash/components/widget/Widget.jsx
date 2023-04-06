@@ -14,12 +14,17 @@ const Widget = ({type}) => {
     const amount = Math.floor(Math.random() * 100);
     const diff = Math.floor(Math.random() * 100);
 
+    // fetch Real Details from DB
+    // this/all transactions
+    // All/this issues
+    // this customer_details
+
     switch (type) {
         case 'users':
             data = {
-                title: 'USERS',
+                title: 'Donations',
                 isMoney: false,
-                link: 'See All Users',
+                link: 'See All Donations',
                 icon: (
                     <PersonOutlinedIcon className='icon' style={{
                         color: 'crimson', 
@@ -29,9 +34,9 @@ const Widget = ({type}) => {
             break;
         case 'orders':
             data = {
-                title: 'ORDERS',
+                title: 'Active Fund Raiser',
                 isMoney: false,
-                link: 'See All Oders',
+                link: 'See All Fund Raisers',
                 icon: (
                     <ShoppingCartOutlinedIcon className='icon' style={{
                         color: 'goldenrod', 
@@ -43,7 +48,7 @@ const Widget = ({type}) => {
             data = {
                 title: 'EARNINGS',
                 isMoney: true,
-                link: 'View Earnings',
+                link: 'View Funds',
                 icon: (
                     <MonetizationOnOutlinedIcon className='icon'  style={{
                         color: 'green', 
@@ -67,13 +72,11 @@ const Widget = ({type}) => {
             break;
     }
 
-
-
   return (
     <div className='widget'>
         <div className='left'>
             <span className='title'>{data.title}</span>
-            <span className='counter'>{data.isMoney && '$'} {amount}</span>
+            <span className='counter'>{data.isMoney && '#'} {amount}</span>
             <span className='link'>{data.link}</span>
         </div>
         <div className='right'>

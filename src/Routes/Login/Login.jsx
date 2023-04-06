@@ -42,7 +42,7 @@ function Login() {
 
     // making axios call to API
     const handleSubmit = () => {
-        setValue('Please Wait...')
+        setValue('AUTHENTICATING...')
         setDisabled(true)
         if(username === '' || pwd === ''){
             // alert('Please Fill out the empty fields')

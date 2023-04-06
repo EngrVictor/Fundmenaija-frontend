@@ -106,15 +106,15 @@
   $this->ProfileColor = htmlspecialchars(strip_tags($this->ProfileColor));
 
   // Bind data
-  $stmt->bindParam(':user_id', $this->AccountNo);
-  $stmt->bindParam(':user_username', $this->FAccountNo);
-  $stmt-> bindParam(':name', $this->Username);
-  $stmt->bindParam(':avatar', $this->Amount);
-  $stmt->bindParam(':avatar_2', $this->Debit);
-  $stmt->bindParam(':issue_title', $this->Credit);
-  $stmt->bindParam(':issue_body', $this->Date);
-  $stmt->bindParam(':issue_time', $this->Status);
-  $stmt->bindParam(':issue_time', $this->ProfileColor);
+  $stmt->bindParam(':AccountNo', $this->AccountNo);
+  $stmt->bindParam(':FAccountNo', $this->FAccountNo);
+  $stmt-> bindParam(':Username', $this->Username);
+  $stmt->bindParam(':Amount', $this->Amount);
+  $stmt->bindParam(':Debit', $this->Debit);
+  $stmt->bindParam(':Credit', $this->Credit);
+  $stmt->bindParam(':Date', $this->Date);
+  $stmt->bindParam(':Status', $this->Status);
+  $stmt->bindParam(':ProfileColor', $this->ProfileColor);
 
   // Execute query
   if($stmt->execute()) {

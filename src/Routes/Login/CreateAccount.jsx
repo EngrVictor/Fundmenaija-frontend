@@ -35,6 +35,9 @@ function CreateAccount() {
     // win.setItem('username', '')
     // console.log(win.getItem('username'))
 
+    // Navigtion for redirect
+    const Navigate = useNavigate()
+
     // check if user is alreeady logged in
     useEffect(() => {
         if(win.getItem('username') !== '' && win.getItem('accountNo') !== ''){
@@ -43,8 +46,6 @@ function CreateAccount() {
             // console.log(win.getItem('username'))
         }
     }, [])
-    // Navigtion for redirect
-    const Navigate = useNavigate()
 
     // axios API call URL
     // const URL = 'https://fundmenaija.com/API/data/user/create.php'; // production
@@ -56,7 +57,7 @@ function CreateAccount() {
     const handleSubmit = () => {
         setValue('Creating Account...')
         setDisabled(true)
-        if(username === '' || firstname === '' || lastname === '' || mobile === '' || email === '' || id === '' || image === '' || pwd === '' || cpwd === ''){
+        if(username === '' || firstname === '' || lastname === '' || mobile === '' || email === '' || id_type === '' || image === '' || pwd === '' || cpwd === ''){
             // alert('Please Fill out the empty fields')
             swal({
                 title: "Account Alert!",
@@ -93,16 +94,16 @@ function CreateAccount() {
 
                     swal({
                         title: res.data.message,
-                        text: "Proceed to Activate Account",
+                        text: "Proceed to Activate Account?",
                         icon: "success",
                     });
 
                     Navigate('/activate_account', res.data);
                 }else{
-                    console.log(res.data);
+                    console.log(res);
                     swal({
                         title: "Sign up Failed",
-                        text: res.data.message,
+                        text: 'Error: '+res.data.message,
                         icon: "error",
                     });
                     setValue('Sign Up')
@@ -145,12 +146,12 @@ function CreateAccount() {
                             <input type="text" onChange={(e) => setLastname(e.target.value)} name="lastname" placeholder='Last Name' required/>
                             <input type="tel" onChange={(e) => setMobile(e.target.value)} name="mobile" placeholder='Mobile Number' required/>
                             <input type="email" onChange={(e) => setEmail(e.target.value)} name="email" placeholder='Email Address' required/>
-                            <select defaultValue={'default'} name='id_type' onChange={(e) => setId_type(e.target.value)} required>
-                                <option value='default'>Select Document To Upload</option>
+                            <select name='id_type' onChange={(e) => setId_type(e.target.value)} required>
+                                <option value='default' selected disabled={true}>Select Document To Upload</option>
                                 <option value='NIN Document'>NIN Document</option>
-                                <option value='Voters card'>Voters card</option>
+                                <option value='Voters Card'>Voters card</option>
                                 <option value='Driver License'>Driver License</option>
-                                <option value='International Password'>International Password</option>
+                                <option value='International Passport'>International Passport</option>
                             </select>
                             <input type="file" name='file' className='form-control' onChange={(e) => setImage(e.target.files[0])} required/>
                             <input type="text" name="username" onChange={(e) => setUsername(e.target.value)} placeholder='Choose Username' required/>

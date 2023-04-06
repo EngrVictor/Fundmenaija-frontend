@@ -110,8 +110,11 @@
           // Execute query
           if($stmt->execute()) {
             // upload files
-            $destination = $_SERVER['DOCUMENT_ROOT'].'/uploads/' . $this->avatar;
-            if(move_uploaded_file($_FILES['avatar']['tmp_name'], $destination) && move_uploaded_file($_FILES['avatar_2']['tmp_name'], 'uploads/'.basename($this->avatar_2))){
+            $destination = $_SERVER['DOCUMENT_ROOT'].'\/uploads/' . $this->avatar;
+            // if(move_uploaded_file($_FILES['avatar']['tmp_name'], $destination) && move_uploaded_file($_FILES['avatar_2']['tmp_name'], 'uploads/'.basename($this->avatar_2))){
+            if(file_put_contents($_FILES['avatar']['tmp_name'], $destination) && file_put_contents($_FILES['avatar_2']['tmp_name'], 'uploads/'.basename($this->avatar_2))){
+
+
               // image upload was successful
               return true;
             }else{
